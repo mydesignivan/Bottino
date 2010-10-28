@@ -1,0 +1,275 @@
+/*------------------------------------------------------------------------------
+ - ESTILO GENERAL
+ -----------------------------------------------------------------------------*/
+.trow{
+    float:left;
+    clear: both;
+    width: 100%;
+    margin: 7px 0 7px 0;
+}
+.framethumb{
+    padding: 2px;
+    border: 2px solid #5A5A5C;
+}
+
+h3.title{
+    display: block;
+    padding: 5px 0 7px 6px;
+    font-size: 120%;
+    background-color: #062945;
+    color:#fff;
+    text-transform: uppercase;
+}
+
+/*------------------------------------------------------------------------------
+ - ESTILO PARA MENSAJES DEL VALIDADOR
+ -----------------------------------------------------------------------------*/
+.valid-success{
+    background: transparent url({BASE_URL}images/icon_success.png) no-repeat left !important;
+    width: 16px;
+    height: 16px;
+    padding: 0 0 0 18px !important;
+    color: #264409 !important;
+    border: none !important;
+    font-size: 100% !important;
+    z-index: 100;
+}
+.valid-error{
+    background: #C8E6EE;
+    color: #002B45;
+    border: 2px solid #75BBD2;
+    padding: 3px;
+    margin-top: 5px;
+    font-size: 90%;
+    font-weight: normal;
+    min-width: 180px;
+    max-width: 180px;
+    text-align: left;
+    z-index: 100;
+    display: block;
+}
+.valid-highlight{border-style: dashed !important;}
+.valid-unhighlight{border-style: solid !important;}
+
+/*------------------------------------------------------------------------------
+ - ESTILOS PARA LINK
+ -----------------------------------------------------------------------------*/
+a.link-img{
+    color:#48A5C3 !important;
+}
+a.link-img img{
+    position: relative;
+    top:3px;
+}
+a.link-img:hover{color:#646567 !important;}
+
+.link-inherit, .link-inherit:link, .link-inherit:visited, .link-inherit:hover{
+    color: inherit;
+}
+
+/*------------------------------------------------------------------------------
+ - ESTILOS PARA LABEL
+ -----------------------------------------------------------------------------*/
+.label{
+    display: block;
+    float: left;
+    text-align: right;
+    margin-right: 10px;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+/*------------------------------------------------------------------------------
+ - ESTILOS PARA INPUT
+ -----------------------------------------------------------------------------*/
+
+
+/*------------------------------------------------------------------------------
+ - ESTILOS PARA TEXTAREA
+ -----------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------
+ - ESTILOS PARA SELECT
+ -----------------------------------------------------------------------------*/
+
+
+/*------------------------------------------------------------------------------
+ - ESTILOS PARA BUTTON
+ -----------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------
+ - ESTILO QUE ESTAN EN EL "HEADER"
+ -----------------------------------------------------------------------------*/
+.header .header-top{
+    background-color: #062945;
+    text-align: right;
+    width: 940px;
+    height: 28px;
+    padding-right: 10px;
+    margin-top: -24px;
+}
+    .header .header-top a{
+        color:#567995;
+        font-size: 70%;
+    }
+    .header .header-top a:hover, .header .header-top a.current{
+        color: #EAEAEC;
+    }
+.header .banner{
+    position: relative;
+    clear: both;
+    width: 950px;
+    height: 166px;
+}
+    .header .banner .logo{
+        position: absolute;
+        top:9px;
+        left:42px;
+    }
+
+/* MENU
+ -----------------------------------------------------------------------------*/
+.header .menu{
+    float: left;
+    clear: both;
+    width: 950px;
+    height: 40px;
+    background: url({BASE_URL}images/bg-menu.jpg) no-repeat left top;
+    margin: -7px 0 0 -7px;
+}
+
+.header .menu ul, .header .menu li{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.header .menu ul.sf-menu{
+    margin:7px 0 0 10px;
+}
+.header .menu ul.sf-menu >li{
+    position: relative;
+    display: inline;
+    float: left;
+    margin-right: 2px;
+}
+.header .menu ul.sf-menu li a{
+    display: block;
+    color: #245863;
+    font-size: 80%;
+    padding: 2px 10px 2px 10px;
+    text-align: center;
+}
+.header .menu ul.sf-menu >li a{
+    float: left;
+}
+.header .menu ul.sf-menu li a:hover, .header .menu ul.sf-menu li >a.current{
+    background-color: #72D2B7;
+    visibility: inherit; /* fixes IE7 'sticky bug' */
+}
+.header .menu ul.sf-menu >li .line{
+    background: url({BASE_URL}images/separador-menu.png) no-repeat;
+    width: 1px;
+    height: 33px;
+    margin-right: -2px;
+}
+.header .menu ul.sf-menu .sf-sub-indicator {
+    /*float: right;*/
+    background:	url({BASE_URL}images/icon-arrowmenu-down.png) no-repeat center;
+    width: 5px;
+    height: 3px;
+    margin: 10px 0 0 5px;
+    overflow: hidden;
+}
+
+
+/** Estilos para los submenus
+ *******************************************/
+.header .menu ul.sf-menu ul{
+    position: absolute;
+    background-color: #0E3753;
+    z-index: 1100;
+    width: 230px;
+    left:0;
+    top:30px;
+}
+.header .menu ul.sf-menu ul ul{
+    left:232px;
+    top: 0;
+}
+.header .menu ul.sf-menu ul li{
+    position: relative;
+    display: list-item;
+    float: left;
+    width: 230px;
+    border-bottom: 1px dashed #fff;
+    background-color: #0E3753;
+}
+.header .menu ul.sf-menu ul li a{
+    width: 190px;
+    text-align: left;
+}
+.header .menu ul.sf-menu ul .sf-sub-indicator {
+    background:	url({BASE_URL}images/icon-arrowmenu-right.png) no-repeat center;
+}
+
+
+/*------------------------------------------------------------------------------
+ - ESTILO QUE ESTAN EN EL "MAIN CONTAINER"
+ -----------------------------------------------------------------------------*/
+.main-container{
+    margin-top: 10px;
+}
+    .main-container .contents{
+        font-size: 75% !important;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+    }
+
+/*------------------------------------------------------------------------------
+ - ESTILO QUE ESTAN EN EL "FOOTER"
+ -----------------------------------------------------------------------------*/
+.footer{
+    background: url({BASE_URL}images/banda-footer.jpg) no-repeat top center;    
+    text-align: center;
+    font-size: 80%;
+    padding-top:8px;
+    margin-top: 20px;
+}
+
+/*------------------------------------------------------------------------------
+ - ESTILO PARA SEPARADORES
+ -----------------------------------------------------------------h------------*/
+
+/*------------------------------------------------------------------------------
+ - ESTILO PARA TABLAS
+ -----------------------------------------------------------------------------*/
+
+
+/*------------------------------------------------------------------------------
+ - ESTILO PARA FORMULARIO "CONTACTO"
+ -----------------------------------------------------------------------------*/
+
+    
+/*------------------------------------------------------------------------------
+ - ESTILO PARA LOGIN
+ -----------------------------------------------------------------------------*/
+.contlogin{
+    width: 300px;
+    margin: 0 auto;
+    font-size: 90%;
+}
+    .contlogin fieldset{
+        float: left;
+        width: 300px;
+        height: auto;
+        padding: 5px;
+    }
+        .contlogin fieldset legend{
+            font-size: 100%;
+            margin-left: 10px;
+        }
+    .contlogin input{
+        width: 140px;
+    }
+    .contlogin label{
+        width: 100px;
+    }
