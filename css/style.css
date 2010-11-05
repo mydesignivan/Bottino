@@ -132,7 +132,7 @@ a.link-img:hover{color:#646567 !important;}
 .header .menu{
     float: left;
     clear: both;
-    width: 950px;
+    width: 965px;
     height: 40px;
     background: url({BASE_URL}images/bg-menu.jpg) no-repeat left top;
     margin: -7px 0 0 -7px;
