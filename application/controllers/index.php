@@ -7,12 +7,10 @@ class Index extends Controller {
         parent::Controller();
 
         $this->load->model('contents_model');
-        /*$this->load->helpers('form');
+        $this->load->helpers('form');
         $this->_data=array(
             'listMenu'  =>  $this->contents_model->get_menu()
-        );*/
-
-        $this->_data=array();
+        );
     }
 
     /* PRIVATE PROPERTIES
@@ -26,12 +24,16 @@ class Index extends Controller {
         $params = $this->_get_params($ref);
         $content = $this->contents_model->get_content($ref=="" ? "home" : null);
 
-        $tlp_script=array();
+        $tlp_script = array();
+        if( $content['show_gallery']==1 ) $tlp_script[] = 'plugins_adgallery';
+        if( $content['content_id']==5 ) $tlp_script[] = 'plugins_fancybox';
+        
         $data = array_merge($this->_data, array(
             'tlp_title'            => $params['title'],
             'tlp_meta_description' => $params['meta_description'],
             'tlp_meta_keywords'    => $params['meta_keywords'],
             'tlp_section'          => 'frontpage/contents_view.php',
+            'tlp_script'           => $tlp_script,
             'reference'            => $params['reference'],
             'content'              => $content
         ));

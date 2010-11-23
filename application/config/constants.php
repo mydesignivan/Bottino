@@ -47,6 +47,8 @@ define('TBL_CONTENTS',                    'contents');
 define('TBL_LIST_COUNTRY',                'list_country');
 define('TBL_LIST_STATES',                 'list_states');
 define('TBL_GALLERY_CONTENTS',            'gallery_contents');
+define('TBL_GALLERY_CONTENTS2',           'gallery_contents2');
+define('TBL_GALLERY_PRODUCTS',            'gallery_products');
 define('TBL_CATEGORIES',                  'categories');
 define('TBL_PRODUCTS',                    'products');
 
@@ -69,18 +71,37 @@ $msg = '
     <b>Nombre:</b> {name}<br />
     <b>Direcci&oacute;n:</b> {address}<br />
     <b>Ciudad:</b> {city}<br />
-    <b>C&oacute;digo Postal:</b> {postcode}<br />fax
+    <b>C&oacute;digo Postal:</b> {postcode}<br />
     <b>Pa&iacute;s:</b> {country}<br />
     <b>Provincia:</b> {state}<br />
     <b>E-Mail:</b> {email}<br />
     <b>Telefono:</b> {phone}<br />
     <b>Fax:</b> {fax}<br />
-    <b>Tema:</b> {theme}
-    <hr color="#666666" />{message}
+    <b>Tema:</b> {theme}<br />
+    <hr color="#666666" />Mensaje:<br />{message}
 ';
 define('EMAIL_CONTACT_SUBJECT', 'Formulario de Contacto');
 define('EMAIL_CONTACT_MESSAGE', $msg);
 
+/*
+|--------------------------------------------------------------------------
+| EMAIL FORM "TRABAJE CON NOSOTROS"
+|--------------------------------------------------------------------------
+*/
+$msg = '
+    <b>Nombre y apellido:</b> {name}<br />
+    <b>Telefono:</b> {phone}<br />
+    <b>Email:</b> {email}<br />
+    <b>Direccion:</b> {address}<br />
+    <b>Fecha de nacimiento:</b> {fnac}<br />
+    <b>Sexo:</b> {sex}<br />
+    <b>Trabajar o representar:</b> {tipo}<br />
+    <b>Zona de interes:</b> {zone}<br />
+    <b>Experiencia:</b><br /> {experiencie}<br />
+    <b>Programas:</b><br /> {programs}
+';
+define('EMAIL_TCN_SUBJECT', 'Bottino - Curriculum Vitae');
+define('EMAIL_TNC_MESSAGE', $msg);
 
 /*
 |--------------------------------------------------------------------------
@@ -107,14 +128,21 @@ define('UPLOAD_MAXSIZE', 2048); //Expresado en Kylobytes
 
 define('UPLOAD_PATH_PRODUCTS', './uploads/products/');
 define('UPLOAD_PATH_SIDEBAR', './uploads/sidebar/');
+define('UPLOAD_PATH_SIDEBAR2', './uploads/sidebar2/');
 define('UPLOAD_PATH_CV', './uploads/cv/');
 
-define('IMAGESIZE_WIDTH_THUMB_PRODUCTS', 320);
-define('IMAGESIZE_HEIGHT_THUMB_PRODUCTS', 260);
-define('IMAGESIZE_WIDTH_FULL_PRODUCTS', 320);
-define('IMAGESIZE_HEIGHT_FULL_PRODUCTS', 260);
-define('IMAGESIZE_WIDTH_SIDEBAR', 320);
-define('IMAGESIZE_HEIGHT_SIDEBAR', 260);
+define('IMAGESIZE_PRODGALLERY_THUMB_W', 63);
+define('IMAGESIZE_PRODGALLERY_THUMB_H', 50);
+define('IMAGESIZE_PRODGALLERY_FULL_W', 380);
+define('IMAGESIZE_PRODGALLERY_FULL_H', 285);
+
+define('IMAGESIZE_SIDEBAR_THUMB_W', 183);
+define('IMAGESIZE_SIDEBAR_THUMB_H', 105);
+define('IMAGESIZE_SIDEBAR_FULL_W', 380);
+define('IMAGESIZE_SIDEBAR_FULL_H', 285);
+
+define('IMAGESIZE_SIDEBAR2_THUMB_W', 200);
+define('IMAGESIZE_SIDEBAR2_THUMB_H', 150);
 
 
 /*
@@ -131,6 +159,9 @@ define('TITLE_SERVICIOS', ' - Servicios');
 define('TITLE_REPRESENTACIONES', ' - Representaciones');
 define('TITLE_OBRAS', ' - Obras');
 define('TITLE_TESTIMONIALES', ' - Testimoniales');
+define('TITLE_SITEMAP', ' - Mapa del sitio');
+define('TITLE_CONTACTO', ' - Contacto');
+define('TITLE_TRABAJECONOSOTROS', ' - Trabaje con nosotors');
 
 
 
@@ -148,6 +179,9 @@ define('META_KEYWORDS_SERVICIOS', '');
 define('META_KEYWORDS_REPRESENTACIONES', '');
 define('META_KEYWORDS_OBRAS', '');
 define('META_KEYWORDS_TESTIMONIALES', '');
+define('META_KEYWORDS_SITEMAP', '');
+define('META_KEYWORDS_CONTACTO', '');
+define('META_KEYWORDS_TRABAJECONOSOTROS', '');
 
 define('META_DESCRIPTION_GLOBAL', '');
 define('META_DESCRIPTION_INDEX', '');
@@ -158,6 +192,9 @@ define('META_DESCRIPTION_SERVICIOS', '');
 define('META_DESCRIPTION_REPRESENTACIONES', '');
 define('META_DESCRIPTION_OBRAS', '');
 define('META_DESCRIPTION_TESTIMONIALES', '');
+define('META_DESCRIPTION_SITEMAP', '');
+define('META_DESCRIPTION_CONTACTO', '');
+define('META_DESCRIPTION_TRABAJECONOSOTROS', '');
 
 /*
 |--------------------------------------------------------------------------

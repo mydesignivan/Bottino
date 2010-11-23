@@ -35,18 +35,14 @@
 
 </head>
 <body>
-    <div class="header-bg2"></div>
     <div class="container">
-        <div class="span-24 last header2"> 
+        <div class="span-24 last header"> 
         <?php require('includes/header_panel_inc.php')?>
         </div>
         <div class="clear span-24 last main-container">
-            <div class="contents">
-                <?php
-                    if( isset($tlp_title_section) ) echo '<h1 class="title">'.$tlp_title_section.'</h1>';
-                    require($tlp_section);
-                ?>
-            </div>
+        <?php
+            require($tlp_section);
+        ?>
         </div>
         <div class="clear span-24 last footer"> 
         <?php require('includes/footer_panel_inc.php')?>

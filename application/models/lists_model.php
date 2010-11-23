@@ -17,7 +17,7 @@ class lists_model extends Model {
     }
 
     public function get_states($country_id, $elementDefault=null){
-        $this->db->select('name, state_id');
+        $this->db->select('name, name');
         $this->db->where('country_id', $country_id);
         $this->db->order_by('name', 'asc');
         $data = $this->db->get(TBL_LIST_STATES)->result_array();
@@ -26,6 +26,12 @@ class lists_model extends Model {
         }else{
             return $data;
         }
+    }
+
+    public function get_country_name($id){
+        $this->db->select('name');
+        $row = $this->db->get_where(TBL_LIST_STATES, array('country_id'=>$id))->row_array();
+        return $row['name'];
     }
 
 }

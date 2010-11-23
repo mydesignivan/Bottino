@@ -6,6 +6,13 @@ var jQueryValidatorOptDef = {
     unhighlight : function(element){
         $(element).removeClass('valid-highlight').addClass('valid-unhighlight');
     },
+    errorPlacement: function(error, element) {
+        if( element.is(':input[type=radio]') ){
+            element.parent().parent().append(error);
+        }else{
+            element.parent().append(error);
+        }
+    },
     errorClass : 'valid-error',
     onfocusout: false
 };

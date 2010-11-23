@@ -9,10 +9,13 @@
     <meta name="keywords" content="<?=META_KEYWORDS_GLOBAL . @$tlp_meta_keywords;?>" />
     <meta name="robots" content="index,follow" />
     <link href="images/favicon.ico" rel="stylesheet icon" type="image/ico" />
-<?php    
-    if( isset($tlp_script) && !empty($tlp_script) ) $tlp_script = '/'.implode('/', $tlp_script);
+<?php
+    if( is_array(@$tlp_script) && count(@$tlp_script)>0 ) $tlp_script = '/'.implode('/', $tlp_script);
+    elseif( is_array(@$tlp_script) && count(@$tlp_script)==0 ) $tlp_script = '';
+    else $tlp_script = '';
+
     //INCLUYE LOS SCRIPT CSS
-    echo '<link rel="stylesheet" href="'.site_url('/load/css/initializer/plugins_simplemodal'.@$tlp_script).'" type="text/css" media="screen, projection" />'.chr(13);
+    echo '<link rel="stylesheet" href="'.site_url('/load/css/initializer/plugins_simplemodal'.$tlp_script).'" type="text/css" media="screen, projection" />'.chr(13);
 ?>
     <!--[if lt IE 8]><link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection"/><![endif]-->
     <!--[if IE 6]>
@@ -24,7 +27,7 @@
     <script type="text/javascript" src="<?=site_url("load/js/initializer/plugins_simplemodal")?>"></script>
 <?php
     //INCLUYE LOS SCRIPT JS
-    if( isset($tlp_script) ) echo '<script type="text/javascript" src="'. site_url('load/js'.@$tlp_script).'"></script>'.chr(13);
+    echo '<script type="text/javascript" src="'. site_url('load/js'.$tlp_script).'"></script>'.chr(13);
 ?>
     <!--[if IE 6]>
     <script type="text/javascript">var IE6UPDATE_OPTIONS={icons_path:"js/plugins/ie6update/ie6update/images/"}</script>
@@ -40,6 +43,8 @@
         <div class="clear span-24 last main-container">
         <?php
             require($tlp_section);
+            if( isset($content['sidebar']) && @$content['content_id']!=23 ) require('includes/sidebar_inc.php');
+            if( isset($info['sidebar']) ) require('includes/sidebar_products_inc.php');
         ?>
         </div>
         <div class="clear span-24 last footer"> 

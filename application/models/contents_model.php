@@ -34,23 +34,59 @@ class Contents_model extends Model {
             $content = $query->row_array();
 
             // Extrae los contenidos hijos
-            $this->db->order_by('order', 'asc');
-            $query = $this->db->get_where(TBL_CONTENTS, array('parent_id'=>$content['content_id']));
-            $content['lastchild'] = false;
-            if( $query->num_rows>0 ) $content['childs'] = $query->result_array();
-            else{
-                if( $content['parent_id']>0 ){
-                    $query = $this->db->get_where(TBL_CONTENTS, array('parent_id'=>$content['parent_id']));
-                    $content['childs'] = $query->result_array();
-                    $content['lastchild'] = true;
+            if( $content['level']>0 ){
+                $content['sidebar']['has_submenu']=0;
+
+                if( $content['level']==1 ){
+                    $this->db->select('content_id, reference, title');
+                    $content['sidebar']['menu'] = $this->db->get_where(TBL_CONTENTS, array('parent_id'=>$content['parent_id']))->result_array();
+
+                }else{
+                    $this->db->select('parent_id');
+                    $row = $this->db->get_where(TBL_CONTENTS, array('content_id'=>$content['parent_id']))->row_array();
+                    $parent_id = $row['parent_id'];
+
+                    $this->db->select('content_id, reference, title');
+                    $this->db->order_by('order', 'asc');
+                    $content['sidebar']['menu'] = $this->db->get_where(TBL_CONTENTS, array('parent_id'=>$parent_id))->result_array();
                 }
+                for( $n=0; $n<=count($content['sidebar']['menu'])-1; $n++ ){
+                    $content_id = $content['sidebar']['menu'][$n]['content_id'];
+
+                    $this->db->select('content_id, reference, title');
+                    $this->db->order_by('order', 'asc');
+                    $query = $this->db->get_where(TBL_CONTENTS, array('parent_id'=>$content_id));
+                    if( $query->num_rows>0 ){
+                        $content['sidebar']['has_submenu']=1;
+                        $content['sidebar']['menu'][$n]['submenu'] = $query->result_array();
+                    }
+                }
+
+                //print_array($content['sidebar']['menu'], true);
+
             }
 
             // Extra la galeria de imagenes
-            $this->db->order_by('order', 'asc');
-            $query = $this->db->get_where(TBL_GALLERY_CONTENTS, array('content_id'=>$content['content_id']));
-            if( $query->num_rows>0 ) $content['gallery'] = $query->result_array();
+            $this->db->select(TBL_GALLERY_CONTENTS.'.*, '.TBL_CONTENTS.'.show_gallery');
+            $this->db->join(TBL_GALLERY_CONTENTS, TBL_CONTENTS.'.content_id='.TBL_GALLERY_CONTENTS.'.content_id');
+            $this->db->order_by(TBL_GALLERY_CONTENTS.'.order', 'asc');
+            $query = $this->db->get_where(TBL_CONTENTS, array(TBL_CONTENTS.'.content_id'=>$content['parent_id'], TBL_CONTENTS.'.parent_id'=>0));
+            if( $query->num_rows>0 ) {
+                $content['sidebar']['gallery'] = $query->result_array();
+                $content['show_gallery'] = $content['sidebar']['gallery'][0]['show_gallery'];
+            }else{
+                $query = $this->db->get_where(TBL_GALLERY_CONTENTS, array('content_id'=>$content['content_id']));
+                if( $query->num_rows>0 ) $content['sidebar']['gallery'] = $query->result_array();
+            }
+
+            $content['title'] = $this->_get_title($content['content_id']);
+            if( count($content['title'])>1 ){
+                array_pop($content['title']);
+                $content['title'] = array_reverse($content['title']);
+            }
+            $content['title'] = implode(" &gt; ", $content['title']);
         }
+
 
         return $content;
     }
@@ -75,6 +111,21 @@ class Contents_model extends Model {
         return $query->result_array();
     }
 
+    public function get_list_banner(){
+        $this->db->distinct();
+        $this->db->select('banner_thumb, banner_thumb_width, banner_thumb_height, categorie_content, categorie_name,'.TBL_CATEGORIES.'.reference');
+        $this->db->join(TBL_PRODUCTS, TBL_CATEGORIES.'.reference = '.TBL_PRODUCTS.'.categorie_reference');
+        $this->db->order_by(TBL_CATEGORIES.'.`order`', 'asc');
+        return $this->db->get_where(TBL_CATEGORIES, array('banner'=>1))->result_array();
+    }
+
+    public function get_footer(){
+        $this->db->select('content');
+        $row = $this->db->get_where(TBL_CONTENTS, array('content_id'=>15))->row_array();
+        return $row['content'];
+    }
+
+
     /* PRIVATE FUNCTIONS
      **************************************************************************/
     private function _get_menu($parent_id=0, $reference_parent=''){
@@ -88,7 +139,7 @@ class Contents_model extends Model {
         foreach( $query->result_array() as $row ){
             $j++;
 
-            $output.= $j==$query->num_rows ? '<li class="outline">' : '<li>';
+            $output.= '<li>';
 
             $this->db->from(TBL_CONTENTS);
             $this->db->where('parent_id', $row['content_id']);
@@ -96,9 +147,12 @@ class Contents_model extends Model {
 
             $href = $count_child>0 && $row['parent_id']==0 || $row['reference']=="productos" ? "#" : site_url($reference_parent."/".$row['reference']);
             $seg = $this->uri->segment(1);
-            $class = $seg==$row['reference'] && $row['parent_id']==0 ? ' class="current"' : '';
+            $class=array();
+            if( $seg==$row['reference'] && $row['parent_id']==0  ) $class[] = "current";
+            if( $j==$query->num_rows ) $class[] = "outline";
+            if( count($class)>0 ) $class = ' class="'.implode(" ", $class).'"';
+
             $output.= '<a href="'.$href.'"'.$class.'>'.$row['title'].'</a>';
-            if( $row['parent_id']==0 ) $output.='<div class="line"></div>';
 
             if( $count_child>0 ) {
                 $output.= '<ul class="hide">';
@@ -107,7 +161,9 @@ class Contents_model extends Model {
                 $output.= $this->_get_menu($row['content_id'], $reference);
                 $output.= '</ul></li>';
             }
-            else $output.= '</li>';
+            else {
+                $output.= '</li>';
+            }
 
         }
 
@@ -130,7 +186,7 @@ class Contents_model extends Model {
         foreach( $query->result_array() as $row ){
             $j++;
 
-            $output.= $j==$query->num_rows ? '<li class="outline">' : '<li>';
+            $output.= '<li>';
 
             $this->db->from(TBL_CATEGORIES);
             $this->db->join(TBL_PRODUCTS, TBL_CATEGORIES.'.reference='.TBL_PRODUCTS.'.categorie_reference');
@@ -140,18 +196,35 @@ class Contents_model extends Model {
             $reference = $reference_parent."/".$row['reference'];
             $href = site_url($reference);
             $seg = $this->uri->segment(1);
-            $output.= '<a href="'.$href.'">'.$row['categorie_name'].'</a>';
+            $class = $j==$query->num_rows ? ' class="outline"' : '';
+
+            $output.= '<a href="'.$href.'"'.$class.'>'.$row['categorie_name'].'</a>';
 
             if( $count_child>0 ) {
                 $output.= '<ul class="hide">';
                 $output.= $this->_get_menu_catalog($row['categories_id'], $reference);
                 $output.= '</ul></li>';
             }
-            else $output.= '</li>';
+            else {
+                if( $j==$query->num_rows ) $output.= '<div class="shadow-h"></div>';
+                $output.= '</li>';
+            }
 
         }
 
         return $output;
+    }
+
+    private function _get_title($id, &$title=array()){
+        $this->db->select('title, parent_id');
+        $row = $this->db->get_where(TBL_CONTENTS, array('content_id'=>$id))->row_array();
+
+        $title[] = $row['title'];
+
+        $childs = $this->db->get_where(TBL_CONTENTS, array('content_id'=>$row['parent_id']))->num_rows;
+        if( $childs>0 ) $this->_get_title($row['parent_id'], $title);
+
+        return $title;
     }
     
 }

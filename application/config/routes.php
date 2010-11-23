@@ -42,16 +42,21 @@
 
 $route['default_controller'] = "index";
 $route['scaffolding_trigger'] = "";
-$route['home'] = "index";
-$route['servicios'] = "index/index/servicios";
-$route['donde-estamos'] = "index/index/donde-estamos";
 
+$route['home'] = "index";
 $route['empresa/:any'] = "index/index/$1";
-$route['testimoniales'] = "index/index/testimoniales";
+$route['energia-renovable/:any'] = "index/index/$1";
+$route['servicios/:any'] = "index/index/$1";
+$route['representaciones/:any'] = "index/index/$1";
+$route['obras/:any'] = "index/index/$1";
+$route['testimoniales'] = "index/index/$1";
 
 $route['productos/leermas/:any'] = "productos/leermas/$1";
 $route['productos/search'] = "productos/search";
 $route['productos/:any'] = "productos/index/$1";
+
+$route['mapa-del-sitio'] = "sitemap";
+$route['trabaje-con-nosotros'] = "trabajeconosotros";
 
 //$route['(load|testimoniales|contacto)'] = "index/index/$1";
 

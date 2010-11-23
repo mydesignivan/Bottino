@@ -29,7 +29,8 @@ class Contacto extends Controller {
             'tlp_meta_keywords'    => META_KEYWORDS_CONTACTO,
             'tlp_section'          => 'frontpage/contact_view.php',
             'tlp_script'           => array('plugins_easyslider', 'plugins_validator','plugins_formatnumber', 'class_account'),
-            'listCountry'          => $this->lists_model->get_country(array(''=>'Seleccione un pa&iacute;s'))
+            'listCountry'          => $this->lists_model->get_country(array(''=>'Seleccione un pa&iacute;s')),
+            'content'              => $this->contents_model->get_content('contacto')
         ));
         $this->load->view('template_frontpage_view', $data);
     }
@@ -50,7 +51,7 @@ class Contacto extends Controller {
             $message = str_replace('{address}', $this->input->post('txtAddress'), $message);
             $message = str_replace('{city}', $this->input->post('txtCity'), $message);
             $message = str_replace('{postcode}', $this->input->post('txtPC'), $message);
-            $message = str_replace('{country}', $this->input->post('cboCountry'), $message);
+            $message = str_replace('{country}', $this->lists_model->get_country_name($this->input->post('cboCountry')), $message);
             $message = str_replace('{state}', $this->input->post('cboState'), $message);
             $message = str_replace('{email}', $this->input->post('txtEmail'), $message);
             $message = str_replace('{phone}', $phone, $message);
@@ -62,7 +63,7 @@ class Contacto extends Controller {
 
             //$datauser = $this->users_model->get_info(array('username'=>'mydesignadmin'));
             $datauser = $this->users_model->get_info(array('username'=>'admin'));
-            $to = $datauser['email'];
+            $to = $datauser['email_contact'];
 
             $this->email->from($this->input->post('txtEmail'), $this->input->post('txtName'));
             $this->email->to($to);

@@ -1,21 +1,31 @@
 $(function(){
-    var slider = $("#slider");
-    if( slider.length>0 ){
-        slider.easySlider({
+    var a;
+    a = $("#slider");
+    if( a.length>0 ){
+        a.easySlider({
             prevText : '<img src="images/icon-arrow-left.png" alt="Prev" width="35" height="53" />',
             nextText : '<img src="images/icon-arrow-right.png" alt="Next" width="35" height="53" />'
         });   
     }
-    var gallery = $('#gallery');
-    if( gallery.length>0 ){
-        gallery.adGallery({
-            width : 300,
+    a = $('#gallery');
+    if( a.length>0 ){
+        a.adGallery({
+            width : 380,
             display_next_and_prev : false,
             loader_image: 'images/loader.gif',
             effect : 'fade'
         });
     }
-
+    a = $("a.jq-fancybox");
+    if( a.length>0 ){
+        a.fancybox({
+            "titleShow" : false,
+            "transitionIn" : "elastic",
+            "ransitionOut" : "elastic",
+            "easingIn" : "easeOutBack",
+            "easingOut" : "easeInBack"
+        });
+    }
 });
 
 var CV = {

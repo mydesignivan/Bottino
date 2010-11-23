@@ -12,7 +12,7 @@ class Products_model extends Model {
     public function get_list_front($ref){
         $output = array();
 
-        $this->db->select('categorie_name, categorie_content, reference, parent_id');
+        $this->db->select('categorie_name, categorie_content, reference, parent_id, level, categories_id');
         $query = $this->db->get_where(TBL_CATEGORIES, array('reference'=>$ref));
         if( $query->num_rows==0 ) return false;
         $output = $query->row_array();
@@ -21,7 +21,7 @@ class Products_model extends Model {
         $query = $this->db->get_where(TBL_PRODUCTS, array('categorie_reference'=>$ref));
         $output['listProducts'] = $query->result_array();
 
-        $output['childs'] = $this->_get_childs($output['parent_id']);
+        $this->_get_sidebar($output);
 
         return $output;
     }
@@ -76,6 +76,40 @@ class Products_model extends Model {
         $query = $this->db->get();
         if( $query->num_rows>0 ) return $query->result_array();
         return false;
+    }
+
+    private function _get_sidebar(&$output){
+        // Extrae los contenidos hijos
+        if( $output['level']==0 ){
+            $this->db->select('categories_id as id, reference, categorie_name as title');
+            $output['sidebar']['menu'] = $this->db->get_where(TBL_CATEGORIES, array('parent_id'=>$output['parent_id']))->result_array();
+
+        }else{
+            $this->db->select('parent_id');
+            $row = $this->db->get_where(TBL_CATEGORIES, array('categories_id'=>$output['parent_id']))->row_array();
+            $parent_id = $row['parent_id'];
+
+            $this->db->select('categories_id as id, reference, categorie_name as title');
+            $this->db->order_by('order', 'asc');
+            $output['sidebar']['menu'] = $this->db->get_where(TBL_CATEGORIES, array('parent_id'=>$parent_id))->result_array();
+        }
+        for( $n=0; $n<=count($output['sidebar']['menu'])-1; $n++ ){
+            $id = $output['sidebar']['menu'][$n]['id'];
+
+            $this->db->select('categories_id as id, reference, categorie_name as title');
+            $this->db->order_by('order', 'asc');
+            $query = $this->db->get_where(TBL_CATEGORIES, array('parent_id'=>$id));
+            if( $query->num_rows>0 ){
+                $output['sidebar']['menu'][$n]['submenu'] = $query->result_array();
+            }
+        }
+
+        //print_array($output['sidebar']['menu'], true);
+
+        // Extra la galeria de imagenes
+        $this->db->order_by('order', 'asc');
+        $query = $this->db->get_where(TBL_GALLERY_PRODUCTS, array('categories_id'=>$output['categories_id']));
+        if( $query->num_rows>0 ) $output['sidebar']['gallery'] = $query->result_array();
     }
 
     private function _get_path_section($ref, &$path=array()){

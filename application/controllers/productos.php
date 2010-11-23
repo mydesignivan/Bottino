@@ -12,7 +12,6 @@ class Productos extends Controller {
             'tlp_title'            => TITLE_PRODUCTOS,
             'tlp_meta_description' => META_DESCRIPTION_PRODUCTOS,
             'tlp_meta_keywords'    => META_KEYWORDS_PRODUCTOS,
-            'tlp_script'           => array('plugins_easyslider'),
             'listMenu'             => $this->contents_model->get_menu()
         );
     }
@@ -24,26 +23,20 @@ class Productos extends Controller {
     /* PUBLIC FUNCTIONS
      **************************************************************************/
     public function index(){
-        if( $this->uri->total_segments()==1 ) redirect($this->config->item('base_url'));
+        $total_segments = $this->uri->total_segments();
+        if( $total_segments==1 ) redirect($this->config->item('base_url'));
 
-        $info = $this->products_model->get_list_front($this->uri->segment(2));
+        $info = $this->products_model->get_list_front($this->uri->segment($total_segments));
         if( !$info ) redirect($this->config->item('base_url'));
-
+        
+        $tlp_script=array('plugins_easyslider');
+        if( isset($info['sidebar']['gallery']) ) $tlp_script[] = 'plugins_adgallery';
         $data = array_merge($this->_data, array(
             'tlp_section'          => 'frontpage/products_view.php',
-            'tlp_script'           => array('plugins_easyslider'),
+            'tlp_script'           => $tlp_script,
             'info'                 => $info
         ));
-        $this->load->view('template_frontpage_view', $data);
-    }
-
-    public function leermas(){
-        $info = $this->products_model->get_product($this->uri->segment(3));
-        if( !$info ) redirect($this->config->item('base_url'));
-        $data = array_merge($this->_data, array(
-            'tlp_section'          => 'frontpage/products_details_view.php',
-            'info'                 => $info
-        ));
+        //print_array($data,true);
         $this->load->view('template_frontpage_view', $data);
     }
 

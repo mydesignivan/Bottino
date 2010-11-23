@@ -16,10 +16,6 @@
         <div class="fleft"><input type="text" name="txtEmailContact" id="txtEmailContact" value="<?=$info['email_contact']?>" /></div>
     </div>
     <div class="trow">
-        <label class="label" for="txtEmailSolCap">* Email Solicitud de Capacitaci&oacute;n</label>
-        <div class="fleft"><input type="text" name="txtEmailSolCap" id="txtEmailSolCap" value="<?=$info['email_solcap']?>" /></div>
-    </div>
-    <div class="trow">
         <label class="label" for="txtEmailCV">* Email Curriculum</label>
         <div class="fleft"><input type="text" name="txtEmailCV" id="txtEmailCV" value="<?=$info['email_cv']?>" /></div>
     </div>

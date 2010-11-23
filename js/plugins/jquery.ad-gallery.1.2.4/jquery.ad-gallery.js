@@ -506,7 +506,8 @@
       if(image.desc.length || image.title.length) {
         var title = '';
         if(image.title.length) {
-          title = '<strong class="ad-description-title">'+ image.title +'</strong>';
+          //title = '<strong class="ad-description-title">'+ image.title +'</strong>';
+          title = image.title;
         };
         var desc = '';
         if(image.desc.length) {

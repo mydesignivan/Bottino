@@ -9,69 +9,105 @@ class Products_panel_model extends Model {
 
     /* PUBLIC FUNCTIONS
      **************************************************************************/
-    public function get_list($ref){
-        $output = array();
-
-        $this->db->select('categorie_name, categorie_content, reference, parent_id');
-        $query = $this->db->get_where(TBL_CATEGORIES, array('reference'=>$ref));
-        if( $query->num_rows==0 ) return false;
-        $output = $query->row_array();
+    public function get_list($categories_id){
+        $this->db->select('reference');
+        $row = $this->db->get_where(TBL_CATEGORIES, array('categories_id'=>$categories_id))->row_array();
 
         $this->db->order_by('order', 'asc');
-        $query = $this->db->get_where(TBL_PRODUCTS, array('categorie_reference'=>$ref));
-        $output['listProducts'] = $query->result_array();
-
-        $output['childs'] = $this->_get_childs($output['parent_id']);
-
-        return $output;
+        $query = $this->db->get_where(TBL_PRODUCTS, array('categorie_reference'=>$row['reference']));
+        return $query->result_array();
     }
 
-    public function get_product($ref){
-        $this->db->select(TBL_CATEGORIES.'.parent_id as categorie_parent_id, '.TBL_PRODUCTS.'.*', true);
-        $this->db->from(TBL_PRODUCTS);
-        $this->db->where(TBL_PRODUCTS.'.reference', $ref);
-        $this->db->join(TBL_CATEGORIES, TBL_PRODUCTS.'.categorie_reference = '.TBL_CATEGORIES.'.reference');
-        $query = $this->db->get();
-        if( $query->num_rows==0 ) return false;
-        $result = $query->row_array();
-
-        $result['path_section'] = $this->_get_path_section($result['categorie_reference']);
-        $result['path_section'] = array_reverse($result['path_section']);
-        $result['path_section'] = implode(" &gt; ", $result['path_section'])." &gt; ".$result['product_name'];
-
-        $result['childs'] = $this->_get_childs($result['categorie_parent_id']);
-        return $result;
+    public function get_info($id) {
+        $this->db->where('products_id', $id);
+        return $this->db->get_where(TBL_PRODUCTS)->row_array();
     }
 
+    public function create() {
+         $data = array(
+            'codlang'              => 1,
+            'categorie_reference'  => $this->input->post('categorie_reference'),
+            'product_name'         => $this->input->post('txtName'),
+            'product_content'      => $this->input->post('txtContent'),
+            'reference'            => normalize($this->input->post('txtName')),
+            'order'                => $this->_get_num_order(TBL_PRODUCTS, array('categorie_reference'=>$this->input->post('categorie_reference'))),
+            'date_added'           => strtotime(date('d-m-Y')),
+            'last_modified'        => strtotime(date('d-m-Y'))
+         );
+
+         //print_array($data, true);
+
+         $this->db->trans_off();
+         $this->db->trans_start(); // INICIO TRANSACCION
+         if( !$this->db->insert(TBL_PRODUCTS, $data) ) return $this->_set_error('Error Nº1');
+         $this->db->trans_complete(); // COMPLETO LA TRANSACCION
+
+         return 'ok';
+    }
+
+    public function edit() {
+         $data = array(
+            'codlang'              => 1,
+            'categorie_reference'  => $this->input->post('categorie_reference'),
+            'product_name'         => $this->input->post('txtName'),
+            'product_content'      => $this->input->post('txtContent'),
+            'reference'            => normalize($this->input->post('txtName')),
+            'order'                => $this->_get_num_order(TBL_PRODUCTS, array('categorie_reference'=>$this->input->post('categorie_reference'))),
+            'last_modified'        => strtotime(date('d-m-Y'))
+         );
+
+         /*print_array($json);
+         print_array($data, true);*/
+
+         $this->db->trans_off();
+         $this->db->trans_start(); // INICIO TRANSACCION
+         $this->db->where('products_id', $this->input->post('products_id'));
+         if( !$this->db->update(TBL_PRODUCTS, $data) ) return $this->_set_error('Error Nº1');
+         $this->db->trans_complete(); // COMPLETO LA TRANSACCION
+
+         return 'ok';
+    }
+
+    public function delete($id){
+        $this->db->trans_start(); // INICIO TRANSACCION
+        $this->db->where_in('products_id', $id);
+        $res = $this->db->delete(TBL_PRODUCTS);
+        $this->db->trans_complete(); // COMPLETO LA TRANSACCION
+
+        return $res;
+    }
+
+    public function order(){
+        $initorder = $this->input->post('initorder');
+        $rows = json_decode($this->input->post('rows'));
+
+        $res = $this->db->query('SELECT `order` FROM '.TBL_PRODUCTS.' WHERE products_id='.$initorder)->row_array();
+        $order = $res['order'];
+
+        //print_array($rows, true);
+        foreach( $rows as $row ){
+            $id = substr($row, 2);
+            $this->db->where('products_id', $id);
+            if( !$this->db->update(TBL_PRODUCTS, array('order' => $order)) ) return false;
+            $order++;
+        }
+
+        return true;
+    }
 
 
     /* PRIVATE FUNCTIONS
      **************************************************************************/
-    // Extrae los contenidos hijos
-    private function _get_childs($id){
-        $this->db->order_by('order', 'asc');
-        $this->db->distinct();
-        $this->db->select(TBL_CATEGORIES.'.*', true);
-        $this->db->from(TBL_CATEGORIES);
-        $this->db->join(TBL_PRODUCTS, TBL_CATEGORIES.'.reference = '.TBL_PRODUCTS.'.categorie_reference');
-        $this->db->where('parent_id', $id);
-        $query = $this->db->get();
-        if( $query->num_rows>0 ) return $query->result_array();
-        return false;
+    private function _get_num_order($tbl_name, $where=array()){
+        $this->db->select_max('`order`');
+        $this->db->where($where);
+        $row = $this->db->get($tbl_name)->row_array();
+        return is_null($row['order']) ? 1 : $row['order']+1;
     }
 
-    private function _get_path_section($ref, &$path=array()){
-        $result = $this->db->get_where(TBL_CATEGORIES, array('reference'=>$ref))->row_array();
-
-        $path[] = $result['categorie_name'];
-
-        $query = $this->db->get_where(TBL_CATEGORIES, array('categories_id'=>$result['parent_id']));
-        if( $query->num_rows>0 ) {
-            $result = $query->row_array();
-            $this->_get_path_section($result['reference'], $path);
-        }
-
-        return $path;
+    private function _set_error($err){
+        $this->db->trans_rollback();
+        return $err;
     }
 
 }
