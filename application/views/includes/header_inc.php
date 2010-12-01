@@ -7,7 +7,10 @@
     <a href="<?=site_url('/contacto/')?>" <?php if( $this->uri->segment(1)=='contacto' ) echo 'class="current"'?>>CONTACTO</a>
 </div>
 <div class="banner">
-    <img src="images/banner-01.jpg" alt="" width="950" height="160" />
+    <div id="banner">
+        <img src="images/banner-01.jpg" alt="" width="950" height="160" />
+        <img src="images/banner-01.jpg" alt="" width="950" height="160" />
+    </div>
     <a href="<?=$this->config->item('base_uri')?>" class="logo"><img src="images/logo.png" alt="" width="348" height="123" /></a>
 </div>
 <div class="menu">

@@ -78,8 +78,7 @@ var Contents = new (function(){
 
         // Configura el Validador
         var rules = {
-            txtTitle        : 'required',
-            txtContent      : 'tinymce_required'
+            txtTitle        : 'required'
         };
 
         var o = $.extend({}, jQueryValidatorOptDef, {
@@ -219,7 +218,9 @@ var Contents = new (function(){
         for( var i=0; i<=a.length-1; i++ ){
             if( /^txtContent=/.test(a[i])) {
                 a[i] = "txtContent="+escape(tinyMCE.get('txtContent').getContent());
-                break;
+            }
+            if( /^txtContentSidebar=/.test(a[i])) {
+                a[i] = 'txtContentSidebar='+escape(tinyMCE.get('txtContentSidebar').getContent());
             }
         }
         return a.join('&');
@@ -229,7 +230,7 @@ var Contents = new (function(){
         TinyMCE_init.width = '98%';
         TinyMCE_init.height = '200px';
         TinyMCE_init.mode = 'exact';
-        TinyMCE_init.elements = 'txtContent';
+        TinyMCE_init.elements = 'txtContent, txtContentSidebar';
         TinyMCE_init.handle_node_change_callback = function(){
             _j++;
             if( _j>1 ) _formchange=true;

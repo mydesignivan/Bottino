@@ -156,11 +156,21 @@ button{
     clear: both;
     width: 950px;
     height: 166px;
+    z-index: 100;
 }
+    .header #banner{
+        position: absolute;
+        width: 100%;
+        height: 160px;
+        top:0;left:0;
+        z-index: 200;
+        overflow: hidden;
+    }
     .header .banner .logo{
         position: absolute;
         top:9px;
         left:42px;
+        z-index: 200;
     }
 
 /* MENU
@@ -182,32 +192,27 @@ button{
 .header .menu ul.sf-menu{
     margin:7px 0 0 10px;
 }
-.header .menu ul.sf-menu >li{
+.header .menu ul.sf-menu li{
     position: relative;
     display: inline;
     float: left;
     margin-right: 2px;
+    padding-right: 2px;
+    background: url({BASE_URL}images/separator-menu.png) no-repeat right top;
 }
 .header .menu ul.sf-menu li a{
     display: block;
+    float: left;
     color: #245863;
     font-size: 80%;
     padding: 2px 10px 2px 10px;
     text-align: center;
+    text-transform: uppercase;
 }
-.header .menu ul.sf-menu >li a{
-    float: left;
-}
-.header .menu ul.sf-menu li a:hover, .header .menu ul.sf-menu li >a.current{
+.header .menu ul.sf-menu li a:hover, .header .menu ul.sf-menu li a.current{
     background-color: #72D2B7;
     color:#fff;
     visibility: inherit; /* fixes IE7 'sticky bug' */
-}
-.header .menu ul.sf-menu >li .line{
-    background: url({BASE_URL}images/separador-menu.png) no-repeat;
-    width: 1px;
-    height: 33px;
-    margin-right: -2px;
 }
 .header .menu ul.sf-menu .sf-sub-indicator {
     /*float: right;*/
@@ -234,17 +239,18 @@ button{
     top: 0;
 }
 .header .menu ul.sf-menu ul li{
-    position: relative;
     display: list-item;
-    float: left;
     width: 230px;
     background-color: #72D2B7;
+    margin: 0;padding: 0;
 }
 .header .menu ul.sf-menu ul li a{
+    float: none;
     width: 198px;
     text-align: left;
     border-bottom: 1px solid #7B8D9D;
     margin-left:5px;
+    text-transform: none;
 }
     .header .menu ul.sf-menu ul li a:hover{
         border-bottom: 1px solid #fff !important;
@@ -305,6 +311,7 @@ button{
             }
             .main-container .sidebar ul.menu-sidebar li.current{
                 border-bottom: 1px solid #7B8D9D;
+                height: 26px;
             }
             .main-container .sidebar ul.menu-sidebar li.current >a,
             .main-container .sidebar ul.menu-sidebar li a:hover{
@@ -315,11 +322,11 @@ button{
             }
 
         .main-container .sidebar ul.submenu{
-            position: absolute;
+            position: relative;
             width: 183px;
             margin: 0;
             left:203px;
-            top:7px;
+            top:-14px;
         }
             .main-container .sidebar ul.submenu li{
                 background: url({BASE_URL}images/linea-menu-sidebar.png) no-repeat left bottom;
@@ -480,7 +487,7 @@ table tbody tr.row-even td{
     width: 140px;
     font-size: 75%;
 }
-.form-tcn input{
+.form-tcn input[type=text]{
     width: 230px;
 }
 .form-tcn textarea{
@@ -489,15 +496,15 @@ table tbody tr.row-even td{
     font-size: 120% !important;
 }
 .form-tcn .input-code{
-    width: 50px;
+    width: 50px !important;
     margin-right: 5px;
     text-align: center;
 }
 .form-tcn .input-num{
-    width: 168px;
+    width: 168px !important;
 }
 .form-tcn .fnac{
-    width: 90px;
+    width: 90px !important;
     margin-right: 5px;
     text-align: center;
 }

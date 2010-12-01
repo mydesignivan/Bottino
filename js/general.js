@@ -1,14 +1,13 @@
 $(function(){
     var a;
-    a = $("#slider");
-    if( a.length>0 ){
-        a.easySlider({
-            prevText : '<img src="images/icon-arrow-left.png" alt="Prev" width="35" height="53" />',
-            nextText : '<img src="images/icon-arrow-right.png" alt="Next" width="35" height="53" />'
-        });   
-    }
-    a = $('#gallery');
-    if( a.length>0 ){
+    /*if( (a = $('#banner')).length>0 ){
+        a.cycle({
+            fx: "fade",
+            slideExpr: "img"
+        });
+    }*/
+
+    if( (a = $('#gallery')).length>0 ){
         a.adGallery({
             width : 380,
             display_next_and_prev : false,
@@ -16,8 +15,7 @@ $(function(){
             effect : 'fade'
         });
     }
-    a = $("a.jq-fancybox");
-    if( a.length>0 ){
+    if( (a = $("a.jq-fancybox")).length>0 ){
         a.fancybox({
             "titleShow" : false,
             "transitionIn" : "elastic",

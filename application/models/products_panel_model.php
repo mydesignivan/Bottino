@@ -52,7 +52,6 @@ class Products_panel_model extends Model {
             'product_name'         => $this->input->post('txtName'),
             'product_content'      => $this->input->post('txtContent'),
             'reference'            => normalize($this->input->post('txtName')),
-            'order'                => $this->_get_num_order(TBL_PRODUCTS, array('categorie_reference'=>$this->input->post('categorie_reference'))),
             'last_modified'        => strtotime(date('d-m-Y'))
          );
 

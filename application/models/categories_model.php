@@ -35,11 +35,12 @@ class Categories_model extends Model {
         /*print_array($json);
         print_array($data, true);*/
 
+        $this->db->trans_off();
         $this->db->trans_start(); // INICIO TRANSACCION
-        if( !$this->db->insert(TBL_CATEGORIES, $data) ) return "Error Nº1";
+        if( !$this->db->insert(TBL_CATEGORIES, $data) ) return $this->_set_error("Error Nº1");
         else{
             $id = $this->db->insert_id();
-            if( !$this->_copy_images($json->gallery->images_new, $id) ) return "Error Nº2";
+            if( !$this->_copy_images($json->gallery->images_new, $id) ) return $this->_set_error("Error Nº2");
         }
         $this->db->trans_complete(); // COMPLETO LA TRANSACCION
          
@@ -65,14 +66,15 @@ class Categories_model extends Model {
         //print_array($data, true);
 
 
+        $this->db->trans_off();
         $this->db->trans_start(); // INICIO TRANSACCION
         $this->db->where('categories_id', $this->input->post('categories_id'));
-        if( !$this->db->update(TBL_CATEGORIES, $data) ) return "Error Nº1";
+        if( !$this->db->update(TBL_CATEGORIES, $data) ) return $this->_set_error("Error Nº1");
         else{
             $gallery = $json->gallery;
 
             if( count($gallery->images_new)>0 ){
-                if( !$this->_copy_images($gallery->images_new, $this->input->post('categories_id')) ) return "Error Nº2";
+                if( !$this->_copy_images($gallery->images_new, $this->input->post('categories_id')) ) return $this->_set_error("Error Nº2");
             }
 
              // Elimina las imagenes quitadas
@@ -81,7 +83,7 @@ class Categories_model extends Model {
                     if( $this->db->delete(TBL_GALLERY_PRODUCTS, array('image'=>urldecode($row->image_full))) ){
                         @unlink(UPLOAD_PATH_PRODUCTS . urldecode($row->image_full));
                         @unlink(UPLOAD_PATH_PRODUCTS . urldecode($row->image_thumb));
-                    }else return "Error Nº3";
+                    }else return $this->_set_error("Error Nº3");
                 }
              }
 
@@ -238,6 +240,11 @@ class Categories_model extends Model {
         }
 
         return true;
+    }
+
+    private function _set_error($err){
+        $this->db->trans_rollback();
+        return $err;
     }
     
 }

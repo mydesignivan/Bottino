@@ -35,21 +35,20 @@ fieldset.fieldset-categories{
 fieldset.fieldset-form{
     position: relative;
     width: 670px;
-    height: 440px;
+    height: auto;
     font-size: 90%;
 }
     fieldset.fieldset-form .cont-products{
         position: relative;
         width: 669px;
-        height: 388px;
-        overflow: auto;
+        height: auto;
     }
     fieldset.fieldset-form .busy{
-        display: none;
+        display: block;
         position: absolute;
         left:0;top:0;
-        width: 669px;
-        height: 415px;
+        width: 671px;
+        height: 100%;
         background: transparent url({BASE_URL}images/ajax-loader2.gif) no-repeat center;
         z-index: 1000;
     }
@@ -73,6 +72,7 @@ fieldset.fieldset-form{
  - ESTILO PARA TABLA "PRODUCTOS"
  -----------------------------------------------------------------------------*/
 .table-products{
+    clear: both;
     font-size: 80%;
 }
 .table-products .cell1{
@@ -99,7 +99,7 @@ fieldset.fieldset-form{
 fieldset.gallery-panel{
     float:left;
     width: 618px;
-    height: 200px;
+    height: 182px;
     padding-top: 10px;
     margin-bottom: 10px;
     padding: 10px;
@@ -139,3 +139,4 @@ fieldset.gallery-panel{
                 margin-top: 5px;
             }
     .gallery-panel-upload{margin-left: 20px;}
+    fieldset.gallery-panel ul li input{ width: 124px;}

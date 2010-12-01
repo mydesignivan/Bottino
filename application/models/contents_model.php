@@ -38,7 +38,7 @@ class Contents_model extends Model {
                 $content['sidebar']['has_submenu']=0;
 
                 if( $content['level']==1 ){
-                    $this->db->select('content_id, reference, title');
+                    $this->db->select('content_id, reference, title, content');
                     $content['sidebar']['menu'] = $this->db->get_where(TBL_CONTENTS, array('parent_id'=>$content['parent_id']))->result_array();
 
                 }else{
@@ -46,20 +46,27 @@ class Contents_model extends Model {
                     $row = $this->db->get_where(TBL_CONTENTS, array('content_id'=>$content['parent_id']))->row_array();
                     $parent_id = $row['parent_id'];
 
-                    $this->db->select('content_id, reference, title');
+                    $this->db->select('content_id, reference, title, content');
                     $this->db->order_by('order', 'asc');
                     $content['sidebar']['menu'] = $this->db->get_where(TBL_CONTENTS, array('parent_id'=>$parent_id))->result_array();
                 }
+
+                $menu = array();
                 for( $n=0; $n<=count($content['sidebar']['menu'])-1; $n++ ){
-                    $content_id = $content['sidebar']['menu'][$n]['content_id'];
+                    $menu =& $content['sidebar']['menu'];
+                    $content_id = $menu[$n]['content_id'];
 
                     $this->db->select('content_id, reference, title');
                     $this->db->order_by('order', 'asc');
                     $query = $this->db->get_where(TBL_CONTENTS, array('parent_id'=>$content_id));
                     if( $query->num_rows>0 ){
                         $content['sidebar']['has_submenu']=1;
-                        $content['sidebar']['menu'][$n]['submenu'] = $query->result_array();
+                        $menu[$n]['submenu'] = $query->result_array();
+                        if( $menu[$n]['content']=='' ){
+                            $menu[$n]['reference2'] = $menu[$n]['reference'].'/'.$menu[$n]['submenu'][0]['reference'];
+                        }
                     }
+                    unset($menu[$n]['content']);
                 }
 
                 //print_array($content['sidebar']['menu'], true);
@@ -141,20 +148,29 @@ class Contents_model extends Model {
 
             $output.= '<li>';
 
-            $this->db->from(TBL_CONTENTS);
-            $this->db->where('parent_id', $row['content_id']);
-            $count_child = $this->db->count_all_results();
+            $this->db->select('reference');
+            $query2 = $this->db->get_where(TBL_CONTENTS, array('parent_id'=>$row['content_id']));
 
-            $href = $count_child>0 && $row['parent_id']==0 || $row['reference']=="productos" ? "#" : site_url($reference_parent."/".$row['reference']);
+            if( $query2->num_rows>0 && $row['parent_id']==0 || $row['reference']=="productos" ){
+                $href = "#";
+            }
+            elseif( $query2->num_rows>0 && $row['content']=='' && $row['reference']!="productos" ){
+                $row2 = $query2->result_array();
+                $href = site_url($reference_parent."/".$row['reference'].'/'.$row2[0]['reference']);
+            }else{
+                $href = site_url($reference_parent."/".$row['reference']);
+            }
+
             $seg = $this->uri->segment(1);
             $class=array();
             if( $seg==$row['reference'] && $row['parent_id']==0  ) $class[] = "current";
             if( $j==$query->num_rows ) $class[] = "outline";
             if( count($class)>0 ) $class = ' class="'.implode(" ", $class).'"';
+            else $class="";
 
             $output.= '<a href="'.$href.'"'.$class.'>'.$row['title'].'</a>';
 
-            if( $count_child>0 ) {
+            if( $query2->num_rows>0 ) {
                 $output.= '<ul class="hide">';
                 $reference = $row['reference'];
                 if( $reference_parent!='' ) $reference = $reference_parent .'/'. $row['reference'];

@@ -26,16 +26,16 @@ class Contents_panel_model extends Model {
 
         $reference = normalize(trim($this->input->post('txtTitle')));
         $data = array(
-            'codlang'        => 1,
-            'parent_id'      => $this->input->post('parent_id'),
-            'title'          => trim($this->input->post('txtTitle')),
-            'reference'      => $reference,
-            'content'        => $this->input->post('txtContent'),
-            'show_gallery'   => $this->input->post('chkShowGallery'),
-            'level'          => $this->input->post('parent_id')>0 ? $this->_get_level() : 0,
-            'order'          => $this->_get_num_order(TBL_CONTENTS, array('parent_id'=>$this->input->post('parent_id'))),
-            'date_added'     => strtotime(date('d-m-Y')),
-            'last_modified'  => strtotime(date('d-m-Y'))
+            'codlang'         => 1,
+            'parent_id'       => $this->input->post('parent_id'),
+            'title'           => trim($this->input->post('txtTitle')),
+            'reference'       => $reference,
+            'content'         => $this->input->post('txtContent'),
+            'content_sidebar' => $this->input->post('txtContentSidebar'),
+            'level'           => $this->input->post('parent_id')>0 ? $this->_get_level() : 0,
+            'order'           => $this->_get_num_order(TBL_CONTENTS, array('parent_id'=>$this->input->post('parent_id'))),
+            'date_added'      => strtotime(date('d-m-Y')),
+            'last_modified'   => strtotime(date('d-m-Y'))
         );
 
         /*print_array($json);
@@ -67,7 +67,7 @@ class Contents_panel_model extends Model {
             'title'             => trim($this->input->post('txtTitle')),
             'reference'         => $reference,
             'content'           => $this->input->post('txtContent'),
-            'show_gallery'      => $this->input->post('chkShowGallery'),
+            'content_sidebar'   => $this->input->post('txtContentSidebar'),
             'last_modified'     => strtotime(date('d-m-Y'))
         );
 

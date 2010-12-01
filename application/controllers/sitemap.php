@@ -13,7 +13,8 @@ class Sitemap extends Controller {
             'tlp_meta_description' => META_DESCRIPTION_SITEMAP,
             'tlp_meta_keywords'    => META_KEYWORDS_SITEMAP,
             'tlp_section'          => 'frontpage/sitemap_view.php',
-            'listMenu'  =>  $this->contents_model->get_menu()
+            'tlp_script'           => array('plugins_cycle'),
+            'listMenu'             => $this->contents_model->get_menu()
         );
     }
 

@@ -37,7 +37,7 @@
             </div>
             <div class="trow">
                 <label class="label" for="txtNac">* Fecha de Nacimiento</label>
-                <div class="fleft"><input type="text" name="txtNac" id="txtNac" class="fnac" readonly /></div>
+                <div class="fleft"><input type="text" name="txtNac" id="txtNac" class="fnac" readonly="readonly" /></div>
             </div>
             <div class="trow">
                 <label class="label" for="optSexM">* Sexo</label>
@@ -52,7 +52,7 @@
         <div class="span-11 fright">
             <div class="trow">
                 <label class="label">&nbsp;</label>
-                <label><input type="radio" name="optTipo" value="Trabajar" checked /> Trabajar</label>&nbsp;&nbsp;<label><input type="radio" name="optTipo" value="Representar" /> Representar</label>
+                <label><input type="radio" name="optTipo" value="Trabajar" checked="checked" /> Trabajar</label>&nbsp;&nbsp;<label><input type="radio" name="optTipo" value="Representar" /> Representar</label>
             </div>
             <div class="trow">
                 <label class="label" for="txtZona">* Zona de inter&eacute;s</label>

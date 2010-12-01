@@ -13,8 +13,13 @@
         <div class="fleft"><input type="text" name="txtTitle" id="txtTitle" value="<?=@$info['title']?>" /></div>
     </div>
     <div class="trow">
-        * Contenido<br /><div class="clear"></div>
+        Contenido<br /><div class="clear"></div>
         <textarea rows="10" cols="22" id="txtContent" name="txtContent"><?=@$info['content']?></textarea>
+    </div>
+
+    <div class="trow">
+        Contenido sidebar<br /><div class="clear"></div>
+        <textarea rows="10" cols="22" id="txtContentSidebar" name="txtContentSidebar"><?=@$info['content_sidebar']?></textarea>
     </div>
 
     <div class="trow">
@@ -31,7 +36,7 @@
                             <a href="javascript:void(0)" class="fright handle"><img src="images/icon_arrow_move2.png" alt="" width="16" height="16" /></a>
                         </div>
                         <div class="trow">
-                            <input type="text" class="pg-title" style="width:100%;" value="<?=$row['title']?>" />
+                            <input type="text" class="pg-title" value="<?=$row['title']?>" />
                         </div>
                     </li>
             <?php }?>
@@ -44,7 +49,7 @@
                             <a href="javascript:void(0)" class="fright handle"><img src="images/icon_arrow_move2.png" alt="" width="16" height="16" /></a>
                         </div>
                         <div class="trow">
-                            <input type="text" class="pg-title" style="width:100%;" />
+                            <input type="text" class="pg-title" />
                         </div>
                     </li>
         <?php }?>
@@ -63,9 +68,6 @@
 
             <div id="pg-msgerror" class="clear error span-7 hide"></div>
         </div>
-    </div>
-    <div class="trow">
-        <label class="label" style="width:200px">Mostrar como galer&iacute;a <input type="checkbox" name="chkShowGallery" value="1" <?php if( @$info['show_gallery']==1 ) echo 'checked="checked"'?> /></label>
     </div>
 
     <input type="hidden" name="content_id" id="content_id" value="<?=@$info['content_id']?>" />

@@ -15,7 +15,7 @@
     </div>
     <?php }?>
 
-    <form id="form1" class="form-contact" action="<?=site_url('/contacto/send');?>" method="post" enctype="application/x-www-form-urlencoded">
+    <form id="form1" class="form-contact span-10" action="<?=site_url('/contacto/send');?>" method="post" enctype="application/x-www-form-urlencoded">
         <div class="trow">
             <label class="label" for="txtCompany">* Compa&ntilde;&iacute;a</label>
             <div class="fleft"><input type="text" name="txtCompany" id="txtCompany" /></div>

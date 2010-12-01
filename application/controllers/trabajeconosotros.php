@@ -27,7 +27,7 @@ class Trabajeconosotros extends Controller {
             'tlp_meta_description' => META_DESCRIPTION_TRABAJECONOSOTROS,
             'tlp_meta_keywords'    => META_KEYWORDS_TRABAJECONOSOTROS,
             'tlp_section'          => 'frontpage/trabajeconosotros_view.php',
-            'tlp_script'           => array('plugins_easyslider', 'plugins_validator', 'plugins_datepicker', 'plugins_formatnumber', 'class_tcn')
+            'tlp_script'           => array('plugins_cycle','plugins_validator', 'plugins_datepicker', 'plugins_formatnumber', 'class_tcn')
         ));
         $this->load->view('template_frontpage_view', $data);
     }

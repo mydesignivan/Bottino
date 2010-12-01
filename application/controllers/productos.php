@@ -12,6 +12,7 @@ class Productos extends Controller {
             'tlp_title'            => TITLE_PRODUCTOS,
             'tlp_meta_description' => META_DESCRIPTION_PRODUCTOS,
             'tlp_meta_keywords'    => META_KEYWORDS_PRODUCTOS,
+            'tlp_script'           => array('plugins_cycle'),
             'listMenu'             => $this->contents_model->get_menu()
         );
     }
@@ -29,26 +30,15 @@ class Productos extends Controller {
         $info = $this->products_model->get_list_front($this->uri->segment($total_segments));
         if( !$info ) redirect($this->config->item('base_url'));
         
-        $tlp_script=array('plugins_easyslider');
+        $tlp_script=array();
         if( isset($info['sidebar']['gallery']) ) $tlp_script[] = 'plugins_adgallery';
         $data = array_merge($this->_data, array(
             'tlp_section'          => 'frontpage/products_view.php',
-            'tlp_script'           => $tlp_script,
+            'tlp_script'           => array_merge($this->_data['tlp_script'], $tlp_script),
             'info'                 => $info
         ));
         //print_array($data,true);
         $this->load->view('template_frontpage_view', $data);
-    }
-
-    public function search(){
-        if( $_SERVER['REQUEST_METHOD']=="POST" ){            
-            $data = array_merge($this->_data, array(
-                'tlp_section'          => 'frontpage/products_resultsearch_view.php',
-                'tlp_script'           => array('plugins_easyslider'),
-                'info'                 => $this->products_model->search()
-            ));
-            $this->load->view('template_frontpage_view', $data);
-        }
     }
 
 
