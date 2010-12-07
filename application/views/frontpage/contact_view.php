@@ -77,9 +77,7 @@
 
     <div class="fright span-13">
     <?php 
-        list($code) = extract_var($content['content'], '{', '}');
-        echo $content['content'];
-        echo '<iframe width="100%" height="300" style="border:2px solid #ccc; margin-top:20px;" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="'.$code.'"></iframe>';
+        echo str_replace('{gmap}', '<iframe width="100%" height="300" style="border:2px solid #ccc" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com.ar/maps?f=q&amp;source=s_q&amp;hl=es&amp;geocode=&amp;q=Rioja+357,+Godoy+Cruz,+Mendoza&amp;sll=-38.341656,-63.28125&amp;sspn=36.286491,86.044922&amp;ie=UTF8&amp;hq=&amp;hnear=La+Rioja+357,+Mendoza&amp;ll=-32.900126,-68.837632&amp;spn=0.002387,0.005252&amp;z=14&amp;output=embed"></iframe>', $content['content']);
     ?>
 
     </div>

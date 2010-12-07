@@ -20,6 +20,12 @@ h3.title{
     color:#fff;
     text-transform: uppercase;
 }
+h4.title{
+    padding: 4px 0;
+    border-bottom: 1px solid #6C6C6C;
+    font-size: 110%;
+    font-weight: bold;
+}
 h1.title{
     display: block;
     font-size: 150%;
@@ -31,6 +37,11 @@ h1.title{
     color: #6C6C6C;
     margin: 0;
     padding: 0;
+}
+
+.resalt{
+    background-color: blue;
+    color:#fff;
 }
 
 /*------------------------------------------------------------------------------
@@ -144,24 +155,33 @@ button{
     padding-right: 10px;
     margin-top: -24px;
 }
+.header .header-top-er{
+    background-color: #4082BE;
+}
     .header .header-top a{
         color:#567995;
         font-size: 70%;
     }
+        .header .header-top-er a{
+            color:#fff;
+        }
     .header .header-top a:hover, .header .header-top a.current{
         color: #EAEAEC;
+    }
+    .header .header-top-er a:hover{
+        color:#93BD2B;
     }
 .header .banner{
     position: relative;
     clear: both;
     width: 950px;
-    height: 166px;
+    height: 165px;
     z-index: 100;
 }
     .header #banner{
         position: absolute;
         width: 100%;
-        height: 160px;
+        height: 165px;
         top:0;left:0;
         z-index: 200;
         overflow: hidden;
@@ -173,15 +193,38 @@ button{
         z-index: 200;
     }
 
+/* SEARCH
+ -----------------------------------------------------------------------------*/
+.header .header-top .fsearch{
+    float: right;
+    margin-left: 10px;
+}
+    .header .header-top .fsearch input{
+        width: 127px;
+        border: none;
+        background-color: #fff;
+    }
+    .header .header-top .fsearch a{
+        position: relative;
+        top:3px;
+    }
+
 /* MENU
  -----------------------------------------------------------------------------*/
 .header .menu{
+    position: relative;
     float: left;
     clear: both;
     width: 965px;
     height: 40px;
     background: url({BASE_URL}images/bg-menu.jpg) no-repeat left top;
-    margin: -7px 0 0 -7px;
+    margin-left: -7px;
+}
+.header .menu-er{
+    background: url({BASE_URL}images/er/bg-menu.jpg) no-repeat left top;
+    width: 950px;
+    height: 34px;
+    margin: 2px 0 0 1px;
 }
 
 .header .menu ul, .header .menu li{
@@ -190,7 +233,11 @@ button{
     list-style-type: none;
 }
 .header .menu ul.sf-menu{
+    width: 1000px;
     margin:7px 0 0 10px;
+}
+.header .menu-er ul.sf-menu{
+    margin:5px 0 0 9px;
 }
 .header .menu ul.sf-menu li{
     position: relative;
@@ -200,19 +247,29 @@ button{
     padding-right: 2px;
     background: url({BASE_URL}images/separator-menu.png) no-repeat right top;
 }
+.header .menu-er ul.sf-menu li{
+    background: url({BASE_URL}images/er/separator-menu.png) no-repeat right top;
+}
 .header .menu ul.sf-menu li a{
     display: block;
     float: left;
-    color: #245863;
+    color: #062945;
     font-size: 80%;
     padding: 2px 10px 2px 10px;
     text-align: center;
     text-transform: uppercase;
 }
+.header .menu-er ul.sf-menu li a{
+    padding: 4px 10px 4px 10px;
+    margin-top: -2px;
+}
 .header .menu ul.sf-menu li a:hover, .header .menu ul.sf-menu li a.current{
     background-color: #72D2B7;
     color:#fff;
     visibility: inherit; /* fixes IE7 'sticky bug' */
+}
+.header .menu-er ul.sf-menu li a:hover, .header .menu-er ul.sf-menu li a.current{
+    background-color: #4082BE;
 }
 .header .menu ul.sf-menu .sf-sub-indicator {
     /*float: right;*/
@@ -222,6 +279,7 @@ button{
     margin: 10px 0 0 5px;
     overflow: hidden;
 }
+.header .menu ul.sf-menu li.outline{background: none}
 
 
 /** Estilos para los submenus
@@ -244,11 +302,15 @@ button{
     background-color: #72D2B7;
     margin: 0;padding: 0;
 }
+.header .menu-er ul.sf-menu ul li{
+    background-color: #4082BE;
+}
 .header .menu ul.sf-menu ul li a{
     float: none;
     width: 198px;
     text-align: left;
     border-bottom: 1px solid #7B8D9D;
+    margin: 0;
     margin-left:5px;
     text-transform: none;
 }
@@ -309,34 +371,44 @@ button{
                 font-size: 80%;
                 color: #002B45;
             }
+            .main-container .sidebar-er ul.menu-sidebar li a{
+                color: #4082BE;
+            }
             .main-container .sidebar ul.menu-sidebar li.current{
                 border-bottom: 1px solid #7B8D9D;
-                height: 26px;
+                /*height: 26px;*/
             }
-            .main-container .sidebar ul.menu-sidebar li.current >a,
+            .main-container .sidebar ul.menu-sidebar li.current a,
             .main-container .sidebar ul.menu-sidebar li a:hover{
-                color: #73D1B7 !important;
+                color: #73D1B7;
+            }
+            .main-container .sidebar-er ul.menu-sidebar li.current a,
+            .main-container .sidebar-er ul.menu-sidebar li a:hover{
+                color: #679B49;
             }
             .main-container .sidebar ul.menu-sidebar li span{
                 margin-left: -12px;
             }
 
         .main-container .sidebar ul.submenu{
-            position: relative;
+            position: absolute;
             width: 183px;
             margin: 0;
             left:203px;
-            top:-14px;
+            top:7px;
         }
             .main-container .sidebar ul.submenu li{
                 background: url({BASE_URL}images/linea-menu-sidebar.png) no-repeat left bottom;
             }
                 .main-container .sidebar ul.submenu li a{
                     margin-left: 7px;
-                    color: #7B8D9D;
+                    color: #7B8D9D !important;
                 }
                 .main-container .sidebar ul.submenu li a.current{
                     color: #73D1B7 !important;
+                }
+                .main-container .sidebar-er ul.submenu li a.current{
+                    color: #679B49 !important;
                 }
         .main-container .sidebar .image{
             float: left;
@@ -356,6 +428,11 @@ button{
     font-size: 80%;
     padding-top:8px;
     margin-top: 30px;
+}
+.footer-er{
+    background: url({BASE_URL}images/er/bg-footer.jpg) no-repeat top center;
+    padding-top: 90px;
+    color: #4082BE;
 }
 
 /*------------------------------------------------------------------------------
@@ -507,4 +584,18 @@ table tbody tr.row-even td{
     width: 90px !important;
     margin-right: 5px;
     text-align: center;
+}
+
+/*------------------------------------------------------------------------------
+ - ESTILO PARA EL GRAFICO CRONOLOGICO
+ -----------------------------------------------------------------------------*/
+.chart{
+    width:948px;
+    height: 327px;
+    margin: 0 auto;
+    background: url({BASE_URL}images/ajax-loader2.gif) no-repeat center;
+    border: 2px solid #666;
+}
+.chart img{
+    z-index: 0;
 }

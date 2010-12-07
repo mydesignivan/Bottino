@@ -120,6 +120,20 @@ define('EMAIL_CV_MESSAGE', $msg);
 
 /*
 |--------------------------------------------------------------------------
+| EMAIL FORM "CONSULTAS"
+|--------------------------------------------------------------------------
+*/
+$msg = '
+    <b>Nombre:</b> {name}<br />
+    <b>Asunto:</b> {subject}<br />
+    <b>Email:</b> {email}<br />
+    <b>Consulta:</b> <br />{consult}
+';
+define('EMAIL_CONSULTS_SUBJECT', 'Formulario de Consulta');
+define('EMAIL_CONSULTS_MESSAGE', $msg);
+
+/*
+|--------------------------------------------------------------------------
 | UPLOAD FILE
 |--------------------------------------------------------------------------
 */
@@ -161,6 +175,7 @@ define('TITLE_OBRAS', ' - Obras');
 define('TITLE_TESTIMONIALES', ' - Testimoniales');
 define('TITLE_SITEMAP', ' - Mapa del sitio');
 define('TITLE_CONTACTO', ' - Contacto');
+define('TITLE_CONSULTS', ' - Consulta');
 define('TITLE_TRABAJECONOSOTROS', ' - Trabaje con nosotors');
 
 
@@ -181,6 +196,7 @@ define('META_KEYWORDS_OBRAS', '');
 define('META_KEYWORDS_TESTIMONIALES', '');
 define('META_KEYWORDS_SITEMAP', '');
 define('META_KEYWORDS_CONTACTO', '');
+define('META_KEYWORDS_CONSULTS', '');
 define('META_KEYWORDS_TRABAJECONOSOTROS', '');
 
 define('META_DESCRIPTION_GLOBAL', '');
@@ -194,6 +210,7 @@ define('META_DESCRIPTION_OBRAS', '');
 define('META_DESCRIPTION_TESTIMONIALES', '');
 define('META_DESCRIPTION_SITEMAP', '');
 define('META_DESCRIPTION_CONTACTO', '');
+define('META_DESCRIPTION_CONSULTS', '');
 define('META_DESCRIPTION_TRABAJECONOSOTROS', '');
 
 /*

@@ -20,6 +20,10 @@
         <div class="fleft"><input type="text" name="txtEmailCV" id="txtEmailCV" value="<?=$info['email_cv']?>" /></div>
     </div>
     <div class="trow">
+        <label class="label" for="txtEmailConsults">* Email Consultas</label>
+        <div class="fleft"><input type="text" name="txtEmailConsults" id="txtEmailConsults" value="<?=$info['email_consults']?>" /></div>
+    </div>
+    <div class="trow">
         <label for="txtInfo" class="label">Contrase&ntilde;a</label>
         <button type="button" onclick="Account.showcontapass(this);" class="button">Modificar</button>
     </div>

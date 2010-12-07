@@ -36,6 +36,7 @@
     <![endif]-->
 </head>
 <body>
+<?php $ER = $this->uri->segment(1)=='energia-renovable';?>    
     <div class="container">
         <div class="span-24 last header"> 
         <?php require('includes/header_inc.php')?>
@@ -43,11 +44,11 @@
         <div class="clear span-24 last main-container">
         <?php
             require($tlp_section);
-            if( isset($content['sidebar']) && @$content['content_id']!=23 ) require('includes/sidebar_inc.php');
+            if( isset($content['sidebar']) && @$content['content_id']!=23 && strpos(@$content['content'], '{chart}')===FALSE ) require('includes/sidebar_inc.php');
             if( isset($info['sidebar']) ) require('includes/sidebar_products_inc.php');
         ?>
         </div>
-        <div class="clear span-24 last footer"> 
+        <div class="clear span-24 last footer<?php if($ER) echo ' footer-er'?>"> 
         <?php require('includes/footer_inc.php')?>
         </div>
     </div>

@@ -1,5 +1,5 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');?>
-<div class="sidebar">
+<div class="sidebar<?php if( $ER ) echo ' sidebar-er'?>">
 <?php if( isset($content['sidebar']['menu']) ) {
     $css = $content['sidebar']['has_submenu']==0 ? " menu-sidebar2" : "";
 ?>
@@ -14,16 +14,16 @@
 ?>
         <li <?=$class?>><a href="<?=site_url($segs[1].'/'.$ref)?>"><?=$arrow.$row['title']?></a>
 <?php
-        if( isset($row['submenu']) && $row['reference']==$lastSeg ) {
-            echo '<ul class="submenu">';
-            foreach( $row['submenu'] as $row2 ){
-                $class = $row2['reference']==$segs[count($segs)] ? 'class="current"' : '';
-            ?>
-                <li><a href="<?=site_url($segs[1].'/'.$row['reference'].'/'.$row2['reference'])?>" <?=$class?>><?=$row2['title']?></a></li>
+    if( isset($row['submenu']) && $row['reference']==$lastSeg ) {
+        echo '<ul class="submenu">';
+        foreach( $row['submenu'] as $row2 ){
+            $class = $row2['reference']==$segs[count($segs)] ? 'class="current"' : '';
+        ?>
+            <li><a href="<?=site_url($segs[1].'/'.$row['reference'].'/'.$row2['reference'])?>" <?=$class?>><?=$row2['title']?></a></li>
 
-            <?php }
-            echo '</ul>';
-        }
+        <?php }
+        echo '</ul>';
+    }
 ?>
         </li>
     <?php }?>

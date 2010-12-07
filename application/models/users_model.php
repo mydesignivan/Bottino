@@ -11,9 +11,10 @@ class Users_model extends Model {
      **************************************************************************/
      public function save(){
         $data = array(
-            'email_contact' => $this->input->post('txtEmailContact'),
-            'email_cv'      => $this->input->post('txtEmailCV'),
-            'last_modified' => date('Y-m-d H:i:s')
+            'email_contact'  => $this->input->post('txtEmailContact'),
+            'email_cv'       => $this->input->post('txtEmailCV'),
+            'email_consults' => $this->input->post('txtEmailConsults'),
+            'last_modified'  => date('Y-m-d H:i:s')
         );
 
         if( $this->input->post('txtPassNew')!='' ){

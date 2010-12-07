@@ -9,7 +9,16 @@
     foreach( $info['listProducts'] as $row ){
 ?>
     <div class="trow">
-        <span class="title-product"><?=$row['product_name']?></span>&nbsp;<?=$row['product_content']?>
+<?php
+$product_content = $row['product_content'];
+$product_title = $row['product_name'];
+$strsearch = urldecode($this->uri->segment(3));
+if( $this->uri->segment(2)=="leermas" ) {
+    $product_content = str_replace($strsearch, '<span class="resalt">'.$strsearch.'</span>', $product_content);
+    $product_title = str_replace($strsearch, '<span class="resalt">'.$strsearch.'</span>', $product_title);
+}
+?>
+        <span class="title-product"><?=$product_title?></span>&nbsp;<?=$product_content?>
     </div>
     <?php }?>
 

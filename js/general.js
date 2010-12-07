@@ -1,11 +1,11 @@
 $(function(){
     var a;
-    /*if( (a = $('#banner')).length>0 ){
+    if( (a = $('#banner')).length>0 ){
         a.cycle({
             fx: "fade",
             slideExpr: "img"
         });
-    }*/
+    }
 
     if( (a = $('#gallery')).length>0 ){
         a.adGallery({

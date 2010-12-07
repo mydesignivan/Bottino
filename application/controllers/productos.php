@@ -41,6 +41,16 @@ class Productos extends Controller {
         $this->load->view('template_frontpage_view', $data);
     }
 
+    public function search(){
+        if( $_SERVER['REQUEST_METHOD']=="POST" ){
+            $this->load->helper('text');
+            $data = array_merge($this->_data, array(
+                'tlp_section'  => 'frontpage/products_resultsearch_view.php',
+                'info'         => $this->products_model->search()
+            ));
+            $this->load->view('template_frontpage_view', $data);
+        }
+    }
 
     /* AJAX FUNCTIONS
      **************************************************************************/

@@ -27,6 +27,10 @@ class Index extends Controller {
 
         $tlp_script = array();
         if( isset($content['sidebar']['gallery']) ) $tlp_script[] = 'plugins_adgallery';
+        if( strpos($content['content'], '{chart}')!==FALSE ) {
+            $tlp_script[] = 'plugins_tooltip';
+            $tlp_script[] = 'class_chart';
+        }
         
         $data = array_merge($this->_data, array(
             'tlp_title'            => $params['title'],

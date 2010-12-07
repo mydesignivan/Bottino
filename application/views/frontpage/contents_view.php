@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');?>
 
-<div class="contents<?php if( isset($content['sidebar']) && @$content['content_id']!=23 ) echo " contents-width"?>">
+<div class="contents<?php if( isset($content['sidebar']) && @$content['content_id']!=23 && strpos(@$content['content'], '{chart}')===FALSE ) echo " contents-width"?>">
 <?php
 if( @$content!='' ){
     if( $content['content_id']==23 ) {
@@ -13,12 +13,20 @@ if( @$content!='' ){
     }
 
     $html = @$content['content'];
-    $var = extract_var($html, '{', '}');
-    echo $html;
 
-    foreach( $var as $val){
-        $this->view('frontpage/'.$val.'_view');
+    if( strpos($html, '{chart}')!==FALSE ){
+        require(APPPATH . 'views/frontpage/chart_view.php');
+
+    }else{
+        $var = extract_var($html, '{', '}');
+
+        echo $html;
+
+        foreach( $var as $val){
+            $this->view('frontpage/'.$val.'_view');
+        }
     }
+
 }
 ?>
 </div>

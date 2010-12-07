@@ -164,7 +164,7 @@ var Contents = new (function(){
                 alert("ERROR AJAX:\n\n"+data);
                 _working=false;
             }
-             $('#cont-products').scrollTop(0);
+             $(document).scrollTop(0);
         });
 
         return false;
@@ -258,7 +258,7 @@ var Contents = new (function(){
          _Loader.show();
          $('#fieldset-form legend').html(title);
          $('#cont-products').load(get_url('panel/contents/'+segm), function(){
-             $('#cont-products').scrollTop(0);             
+             $(document).scrollTop(0);
               callback();
               _Loader.hide();
          });

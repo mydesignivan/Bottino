@@ -112,7 +112,7 @@ fieldset.gallery-panel{
     fieldset.gallery-panel .cont{
         float: left;
         width: 616px;
-        height: 200px;
+        height: 160px;
         position: relative;
         overflow: auto;
         /*border: 1px solid red;*/

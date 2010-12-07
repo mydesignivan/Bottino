@@ -146,7 +146,7 @@ class Contents_model extends Model {
         foreach( $query->result_array() as $row ){
             $j++;
 
-            $output.= '<li>';
+            $output.= '<li'.($j==$query->num_rows && $row['parent_id']==0 ? ' class="outline"' : '').'>';
 
             $this->db->select('reference');
             $query2 = $this->db->get_where(TBL_CONTENTS, array('parent_id'=>$row['content_id']));
