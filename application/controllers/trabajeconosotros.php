@@ -1,35 +1,28 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
-class Trabajeconosotros extends Controller {
+class Trabajeconosotros extends MY_Controller {
 
     /* CONSTRUCTOR
      **************************************************************************/
     function __construct(){
-        parent::Controller();
+        parent::MY_Controller();
 
         $this->load->model('contents_model');
         $this->load->model('lists_model');
-        $this->_data=array(
-            'listMenu'    => $this->contents_model->get_menu()
-        );
     }
-
-    /* PRIVATE PROPERTIES
-     **************************************************************************/
-    private $_data;
 
     /* PUBLIC FUNCTIONS
      **************************************************************************/
     public function index(){
         $this->load->helpers('form');
 
-        $data = array_merge($this->_data, array(
+        $this->assets->add_js_group(array('plugins_datepicker', 'plugins_validate'));
+        $this->assets->add_js(array('plugins/formatnumber/formatnumber.min', 'class/tcn'));
+        $this->_render('front/trabajeconosotros_view', array(
+            'listMenu'    => $this->contents_model->get_menu(),
             'tlp_title'            => TITLE_TRABAJECONOSOTROS,
             'tlp_meta_description' => META_DESCRIPTION_TRABAJECONOSOTROS,
-            'tlp_meta_keywords'    => META_KEYWORDS_TRABAJECONOSOTROS,
-            'tlp_section'          => 'frontpage/trabajeconosotros_view.php',
-            'tlp_script'           => array('plugins_cycle','plugins_validator', 'plugins_datepicker', 'plugins_formatnumber', 'class_tcn')
+            'tlp_meta_keywords'    => META_KEYWORDS_TRABAJECONOSOTROS
         ));
-        $this->load->view('template_frontpage_view', $data);
     }
 
     public function send(){
@@ -44,20 +37,11 @@ class Trabajeconosotros extends Controller {
                     $this->load->library('email');
                     $this->load->model('users_model');
 
-                    $phone = $this->input->post('txtPhoneNum');
-                    if( $this->input->post('txtPhoneCode')!='' ) $phone = $this->input->post('txtPhoneCode')." - ".$phone;
+                    $config = array();
+                    $config['nl2br'] = 'txtConsult';
+                    $config['default'] = '---';
 
-                    $message = EMAIL_TNC_MESSAGE;
-                    $message = str_replace('{name}', $this->input->post('txtName'), $message);
-                    $message = str_replace('{phone}', $phone, $message);
-                    $message = str_replace('{email}', $this->input->post('txtEmail'), $message);
-                    $message = str_replace('{address}', $this->input->post('txtAddess'), $message);
-                    $message = str_replace('{fnac}', $this->input->post('txtNac'), $message);
-                    $message = str_replace('{sex}', $this->input->post('optSex'), $message);
-                    $message = str_replace('{tipo}', $this->input->post('optTipo'), $message);
-                    $message = str_replace('{zone}', $this->input->post('txtZona'), $message);
-                    $message = str_replace('{experiencie}', nl2br($this->input->post('txtExperiencia')), $message);
-                    $message = str_replace('{programs}', nl2br($this->input->post('txtPrograms')), $message);
+                    $message = set_message(json_decode(EMAIL_TNC_MESSAGE), $config);
 
                     //die($message);
 

@@ -40,6 +40,75 @@ function normalize($text, $separator = "-"){
     return ($isUTF8) ? utf8_encode($text) : $text;
 }
 
+function setup($var){
+    $CI =& get_instance();
+    $CI->db->select($var);
+    $arr = $CI->db->get(TBL_SETUP)->row_array();
+    return $arr[$var];
+}
+
+function extract_var(&$str, $left, $right, $del=false){
+    $out = array();
+    $pos2=0;
+    $tmpstr=$str;
+
+    while( ($pos1=strpos($str, $left, $pos2))!== false ){
+        if( ($pos2=strpos($str, $right, $pos1))!== false ){
+            $val = trim(substr($str,  $pos1+strlen($left), $pos2-$pos1-strlen($left)));
+            $tag = $left . $val . $right;
+            $out[] = array(
+                'val' => $val,
+                'tag' => $tag
+            );
+            if( $del ) $tmpstr = str_replace($tag, '', $tmpstr);
+        }
+    }
+    $str = $tmpstr;
+    return $out;
+}
+
+function set_message($body, $_config=null){
+    $config = array();
+    $config['nl2br'] = !isset($_config['nl2br']) ? null : $_config['nl2br'];
+    $config['default'] = !isset($_config['default']) ? null : $_config['default'];
+    $config['data'] = !isset($_config['data']) ? null : $_config['data'];
+
+    $out = '';
+    $ci =& get_instance();
+
+    foreach( $body as $line ){
+        if( preg_match("/\{.*\}/", $line)!==FALSE ){
+            $arrFields = extract_var($line, '{', '}');
+            $j=0;
+            foreach( $arrFields as $var ){
+                //echo $var['val'].'<br>';
+
+                if( is_array($config['data']) && isset($config['data'][$var['val']]) ){
+                    $val = $config['data'][$var['val']];
+                }else{
+                    $val = $ci->input->post($var['val']);
+                }
+
+                if( $val!=false ){
+                    $j++;
+                    if( $config['nl2br']!=null ){
+                        if( is_string($config['nl2br']) ) $config['nl2br'] = array($config['nl2br']);
+                        if( array_search($var['val'], $config['nl2br'])!==FALSE ) $val = nl2br($val);
+                    }
+                    $line = str_replace($var['tag'], $val, $line);
+                }else{
+                    if( is_string($config['default']) ) {
+                        $j=1;
+                        $line = str_replace($var['tag'], $config['default'], $line);
+                    }
+                }
+            }
+            if( $j!=0 ) $out.=$line;
+        }
+    }
+    return $out;
+}
+
 function get_filename($text){
     $separator = "_";
 
@@ -75,43 +144,6 @@ function get_filename($text){
     $text = ($isUTF8) ? utf8_encode($text) : $text;
 
     return uniqid(time()) ."__". $text;
-}
-
-/*function extract_var(&$TheStr, $sLeft, $sRight){
-    $out = array();
-    do{
-        $pleft = strpos($TheStr, $sLeft, 0);
-        if ($pleft !== false){
-            $pright = strpos($TheStr, $sRight, $pleft + strlen($sLeft));
-            If ($pright !== false) {
-                $var = (substr($TheStr, $pleft + strlen($sLeft), ($pright - ($pleft + strlen($sLeft)))));
-                $TheStr = str_replace('{'.$var.'}', '', $TheStr);
-                $out[] = $var;
-            }
-        }
-    }while($pleft !== false);
-
-    return $out;
-}*/
-
-function extract_var(&$str, $left, $right, $del=false){
-    $out = array();
-    $pos2=0;
-    $tmpstr=$str;
-
-    while( ($pos1=strpos($str, $left, $pos2))!== false ){
-        if( ($pos2=strpos($str, $right, $pos1))!== false ){
-            $val = substr($str,  $pos1+strlen($left), $pos2-$pos1-strlen($right)+1);
-            $tag = $left . $val . $right;
-            $out[] = array(
-                'val' => $val,
-                'tag' => $tag
-            );
-            if( $del ) $tmpstr = str_replace($tag, '', $tmpstr);
-        }
-    }
-    $str = $tmpstr;
-    return $out;
 }
 
 ?>

@@ -2,7 +2,7 @@
 <div class="header-top<?php if($ER) echo ' header-top-er'?>">
     <form id="form-search" class="fsearch" action="<?=site_url('/productos/search');?>" method="post" enctype="application/x-www-form-urlencoded">
         <input type="text" name="txtSearch" value="<?=$this->input->post('txtSearch')!='' ? $this->input->post('txtSearch') : 'BUSCAR'?>" onblur="set_input(event, 'BUSCAR')" onfocus="clear_input(event)" />
-        <a href="javascript:void($('form-search').submit())"><img src="images/icon-lupa.png" alt="Buscar" width="18" height="18" /></a>
+        <a href="javascript:void($('form-search').submit())"><img src="public/images/icon-lupa.png" alt="Buscar" width="18" height="18" /></a>
     </form>
     <div class="span-13 fright">
         <a href="<?=site_url('/consultas/')?>" <?php if( $this->uri->segment(1)=='consultas' ) echo 'class="current"'?>>CONSULTAS</a>&nbsp;|&nbsp;
@@ -14,20 +14,20 @@
 <div class="banner">
     <div id="banner">
 <?php if( $ER ){?>
-        <img src="images/banners/energia_renovable/banner-energia-01.jpg" alt="" title="" width="950" height="165" />
-        <img src="images/banners/energia_renovable/banner-energia-02.jpg" alt="" title="" width="950" height="165" />
-        <img src="images/banners/energia_renovable/banner-energia-03.jpg" alt="" title="" width="950" height="165" />
-        <img src="images/banners/energia_renovable/banner-energia-04.jpg" alt="" title="" width="950" height="165" />
+        <img src="public/images/banners/energia_renovable/banner-energia-01.jpg" alt="" title="" width="950" height="165" />
+        <img src="public/images/banners/energia_renovable/banner-energia-02.jpg" alt="" title="" width="950" height="165" />
+        <img src="public/images/banners/energia_renovable/banner-energia-03.jpg" alt="" title="" width="950" height="165" />
+        <img src="public/images/banners/energia_renovable/banner-energia-04.jpg" alt="" title="" width="950" height="165" />
 <?php }else{?>
-        <img src="images/banners/general/banner-general-01.jpg" alt="" title="" width="950" height="165" />
-        <img src="images/banners/general/banner-general-02.jpg" alt="" title="" width="950" height="165" />
-        <img src="images/banners/general/banner-general-03.jpg" alt="" title="" width="950" height="165" />
-        <img src="images/banners/general/banner-general-04.jpg" alt="" title="" width="950" height="165" />
+        <img src="public/images/banners/general/banner-general-01.jpg" alt="" title="" width="950" height="165" />
+        <img src="public/images/banners/general/banner-general-02.jpg" alt="" title="" width="950" height="165" />
+        <img src="public/images/banners/general/banner-general-03.jpg" alt="" title="" width="950" height="165" />
+        <img src="public/images/banners/general/banner-general-04.jpg" alt="" title="" width="950" height="165" />
 <?php }?>
     </div>
     <?php if( $ER ){?>
-    <a href="<?=$this->config->item('base_url')?>" class="logo"><img src="images/logo-blue.png" alt="" width="348" height="123" /></a>
+    <a href="<?=$this->config->item('base_url')?>" class="logo"><img src="public/images/logo-blue.png" alt="" width="348" height="123" /></a>
     <?php }else{?>
-    <a href="<?=$this->config->item('base_url')?>" class="logo"><img src="images/logo.png" alt="" width="348" height="123" /></a>
+    <a href="<?=$this->config->item('base_url')?>" class="logo"><img src="public/images/logo.png" alt="" width="348" height="123" /></a>
     <?php }?>
 </div>

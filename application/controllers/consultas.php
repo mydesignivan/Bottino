@@ -1,33 +1,24 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
-class Consultas extends Controller {
+class Consultas extends MY_Controller {
 
     /* CONSTRUCTOR
      **************************************************************************/
     function __construct(){
-        parent::Controller();
-
+        parent::MY_Controller();
         $this->load->model('contents_model');
-        $this->_data=array(
-            'listMenu'    => $this->contents_model->get_menu(),
-            'tlp_script' => array('plugins_cycle')
-        );
     }
-
-    /* PRIVATE PROPERTIES
-     **************************************************************************/
-    private $_data;
 
     /* PUBLIC FUNCTIONS
      **************************************************************************/
     public function index(){
-        $data = array_merge($this->_data, array(
+        $this->assets->add_js_group('plugins_validate');
+        $this->assets->add_js('class/consults');
+        $this->_render('front/consults_view', array(
+            'listMenu'    => $this->contents_model->get_menu(),
             'tlp_title'            => TITLE_CONSULTS,
             'tlp_meta_description' => META_DESCRIPTION_CONSULTS,
-            'tlp_meta_keywords'    => META_KEYWORDS_CONSULTS,
-            'tlp_section'          => 'frontpage/consults_view.php',
-            'tlp_script'           => array_merge($this->_data['tlp_script'], array('plugins_validator','class_consults'))
+            'tlp_meta_keywords'    => META_KEYWORDS_CONSULTS
         ));
-        $this->load->view('template_frontpage_view', $data);
     }
 
     public function send(){
@@ -35,11 +26,11 @@ class Consultas extends Controller {
             $this->load->library('email');
             $this->load->model('users_model');
             
-            $message = EMAIL_CONSULTS_MESSAGE;
-            $message = str_replace('{name}', $this->input->post('txtName'), $message);
-            $message = str_replace('{subject}', $this->input->post('txtSubject'), $message);
-            $message = str_replace('{email}', $this->input->post('txtEmail'), $message);
-            $message = str_replace('{consult}', nl2br($this->input->post('txtConsult')), $message);
+            $config = array();
+            $config['nl2br'] = 'txtConsult';
+            $config['default'] = '---';
+
+            $message = set_message(json_decode(EMAIL_CONSULTS_MESSAGE), $config);
 
             //die($message);
 

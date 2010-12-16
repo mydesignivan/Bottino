@@ -1,0 +1,601 @@
+/*------------------------------------------------------------------------------
+ - ESTILO GENERAL
+ -----------------------------------------------------------------------------*/
+.trow{
+    float:left;
+    clear: both;
+    width: 100%;
+    margin: 7px 0 7px 0;
+}
+.framethumb{
+    padding: 2px;
+    border: 2px solid #5A5A5C;
+}
+
+h3.title{
+    display: block;
+    padding: 5px 0 7px 6px;
+    font-size: 120%;
+    background-color: #002B45;
+    color:#fff;
+    text-transform: uppercase;
+}
+h4.title{
+    padding: 4px 0;
+    border-bottom: 1px solid #6C6C6C;
+    font-size: 110%;
+    font-weight: bold;
+}
+h1.title{
+    display: block;
+    font-size: 150%;
+    margin-bottom:15px;
+}
+.title-product{
+    font-size: 100%;
+    font-weight: bold;
+    color: #6C6C6C;
+    margin: 0;
+    padding: 0;
+}
+
+.resalt{
+    background-color: blue;
+    color:#fff;
+}
+
+/*------------------------------------------------------------------------------
+ - ESTILO PARA MENSAJES DEL VALIDADOR
+ -----------------------------------------------------------------------------*/
+.valid-success{
+    background: transparent url(public/images/icon_success.png) no-repeat left !important;
+    width: 16px;
+    height: 16px;
+    padding: 0 0 0 18px !important;
+    color: #264409 !important;
+    border: none !important;
+    font-size: 100% !important;
+    z-index: 100;
+}
+.valid-error{
+    background: #C8E6EE;
+    color: #002B45;
+    border: 2px solid #75BBD2;
+    padding: 3px;
+    margin-top: 5px;
+    font-size: 90%;
+    font-weight: normal;
+    min-width: 180px;
+    max-width: 180px;
+    text-align: left;
+    z-index: 100;
+    display: block;
+}
+.valid-highlight{border-style: dashed !important;}
+.valid-unhighlight{border-style: solid !important;}
+
+/*------------------------------------------------------------------------------
+ - ESTILOS PARA LINK
+ -----------------------------------------------------------------------------*/
+a.link-img{
+    color:#48A5C3 !important;
+}
+a.link-img img{
+    position: relative;
+    top:3px;
+}
+a.link-img:hover{color:#646567 !important;}
+
+.link-inherit, .link-inherit:link, .link-inherit:visited, .link-inherit:hover{
+    color: inherit;
+}
+
+/*------------------------------------------------------------------------------
+ - ESTILOS PARA LABEL
+ -----------------------------------------------------------------------------*/
+.label{
+    display: block;
+    float: left;
+    text-align: right;
+    margin-right: 10px;
+    cursor: pointer;
+    font-weight: normal;
+}
+.label-leyend{
+    font-size: 80% !important;
+    font-weight: normal;
+}
+
+/*------------------------------------------------------------------------------
+ - ESTILOS PARA LISTADOS
+ -----------------------------------------------------------------------------*/
+.list-sitemap a{
+    font-size: 100%;
+}
+.list-sitemap ul{
+    display: block !important;
+}
+.list-sitemap ul li{
+    list-style-type: circle !important;
+}
+.list-sitemap ul li li{
+    list-style-type: square !important;
+}
+
+/*------------------------------------------------------------------------------
+ - ESTILOS PARA TEXTAREA
+ -----------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------
+ - ESTILOS PARA SELECT
+ -----------------------------------------------------------------------------*/
+
+
+/*------------------------------------------------------------------------------
+ - ESTILOS PARA BUTTON
+ -----------------------------------------------------------------------------*/
+button{
+    padding: 2px 10px 2px 10px;
+    border: none;
+    background-color: #062945;
+    color: #fff;
+    font-style: italic;
+    font-size: 90%;
+}
+
+
+/*------------------------------------------------------------------------------
+ - ESTILO QUE ESTAN EN EL "HEADER"
+ -----------------------------------------------------------------------------*/
+.header .header-top{
+    background-color: #062945;
+    text-align: right;
+    width: 940px;
+    height: 28px;
+    padding-right: 10px;
+    margin-top: -24px;
+}
+.header .header-top-er{
+    background-color: #4082BE;
+}
+    .header .header-top a{
+        color:#567995;
+        font-size: 70%;
+    }
+        .header .header-top-er a{
+            color:#fff;
+        }
+    .header .header-top a:hover, .header .header-top a.current{
+        color: #EAEAEC;
+    }
+    .header .header-top-er a:hover{
+        color:#93BD2B;
+    }
+.header .banner{
+    position: relative;
+    clear: both;
+    width: 950px;
+    height: 165px;
+    z-index: 100;
+}
+    .header #banner{
+        position: absolute;
+        width: 100%;
+        height: 165px;
+        top:0;left:0;
+        z-index: 200;
+        overflow: hidden;
+    }
+    .header .banner .logo{
+        position: absolute;
+        top:9px;
+        left:42px;
+        z-index: 200;
+    }
+
+/* SEARCH
+ -----------------------------------------------------------------------------*/
+.header .header-top .fsearch{
+    float: right;
+    margin-left: 10px;
+}
+    .header .header-top .fsearch input{
+        width: 127px;
+        border: none;
+        background-color: #fff;
+    }
+    .header .header-top .fsearch a{
+        position: relative;
+        top:3px;
+    }
+
+/* MENU
+ -----------------------------------------------------------------------------*/
+.header .menu{
+    position: relative;
+    float: left;
+    clear: both;
+    width: 965px;
+    height: 40px;
+    background: url(public/images/bg-menu.jpg) no-repeat left top;
+    margin-left: -7px;
+}
+.header .menu-er{
+    background: url(public/images/er/bg-menu.jpg) no-repeat left top;
+    width: 950px;
+    height: 34px;
+    margin: 2px 0 0 1px;
+}
+
+.header .menu ul, .header .menu li{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.header .menu ul.sf-menu{
+    width: 1000px;
+    margin:7px 0 0 10px;
+}
+.header .menu-er ul.sf-menu{
+    margin:5px 0 0 9px;
+}
+.header .menu ul.sf-menu li{
+    position: relative;
+    display: inline;
+    float: left;
+    margin-right: 2px;
+    padding-right: 2px;
+    background: url(public/images/separator-menu.png) no-repeat right top;
+}
+.header .menu-er ul.sf-menu li{
+    background: url(public/images/er/separator-menu.png) no-repeat right top;
+}
+.header .menu ul.sf-menu li a{
+    display: block;
+    float: left;
+    color: #062945;
+    font-size: 80%;
+    padding: 2px 10px 2px 10px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.header .menu-er ul.sf-menu li a{
+    padding: 4px 10px 4px 10px;
+    margin-top: -2px;
+}
+.header .menu ul.sf-menu li a:hover, .header .menu ul.sf-menu li a.current{
+    background-color: #72D2B7;
+    color:#fff;
+    visibility: inherit; /* fixes IE7 'sticky bug' */
+}
+.header .menu-er ul.sf-menu li a:hover, .header .menu-er ul.sf-menu li a.current{
+    background-color: #4082BE;
+}
+.header .menu ul.sf-menu .sf-sub-indicator {
+    /*float: right;*/
+    background:	url(public/images/icon-arrowmenu-down.png) no-repeat center;
+    width: 5px;
+    height: 3px;
+    margin: 10px 0 0 5px;
+    overflow: hidden;
+}
+.header .menu ul.sf-menu li.outline{background: none}
+
+
+/** Estilos para los submenus
+ *******************************************/
+.header .menu ul.sf-menu ul{
+    position: absolute;
+    background: transparent url(public/images/shadow-menu-vertical.png) repeat-y right top;
+    z-index: 1100;
+    width: 243px;
+    left:0;
+    top:25px;
+}
+.header .menu ul.sf-menu ul ul{
+    left:232px;
+    top: 0;
+}
+.header .menu ul.sf-menu ul li{
+    display: list-item;
+    width: 230px;
+    background-color: #72D2B7;
+    margin: 0;padding: 0;
+}
+.header .menu-er ul.sf-menu ul li{
+    background-color: #4082BE;
+}
+.header .menu ul.sf-menu ul li a{
+    float: none;
+    width: 198px;
+    text-align: left;
+    border-bottom: 1px solid #7B8D9D;
+    margin: 0;
+    margin-left:5px;
+    text-transform: none;
+}
+    .header .menu ul.sf-menu ul li a:hover{
+        border-bottom: 1px solid #fff !important;
+    }
+
+.header .menu ul.sf-menu ul .sf-sub-indicator {
+    background:	url(public/images/icon-arrowmenu-right.png) no-repeat center;
+}
+.header .menu .shadow-h{
+    position: absolute;
+    top:23px;
+    width: 232px;
+    height: 13px;
+    background: transparent url(public/images/shadow-menu-horizontal.png) repeat-x left bottom;
+}
+
+/*------------------------------------------------------------------------------
+ - ESTILO QUE ESTAN EN EL "MAIN CONTAINER"
+ -----------------------------------------------------------------------------*/
+.main-container{
+    margin-top: 10px;
+}
+    .main-container .contents{
+        font-size: 75% !important;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+    }
+        .main-container .contents-width{
+            float: left;
+            width: 540px;
+        }
+
+/* SIDEBAR
+ -----------------------------------------------------------------------------*/
+.main-container .sidebar{
+    float: right;
+    width: 386px;
+    padding-top: 10px;
+    /*border:1px solid;*/
+}
+    .main-container .sidebar ul.menu-sidebar,
+    .main-container .sidebar ul.menu-sidebar li{
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        width: 183px;
+    }
+        .main-container .sidebar ul.menu-sidebar{
+            margin-bottom: 40px;
+        }
+        .main-container .sidebar ul.menu-sidebar li{
+            display: list-item;
+            margin-bottom: 2px;
+            position: relative;
+        }
+            .main-container .sidebar ul.menu-sidebar li a{
+                font-size: 80%;
+                color: #002B45;
+            }
+            .main-container .sidebar-er ul.menu-sidebar li a{
+                color: #4082BE;
+            }
+            .main-container .sidebar ul.menu-sidebar li.current{
+                border-bottom: 1px solid #7B8D9D;
+                /*height: 26px;*/
+            }
+            .main-container .sidebar ul.menu-sidebar li.current a,
+            .main-container .sidebar ul.menu-sidebar li a:hover{
+                color: #73D1B7;
+            }
+            .main-container .sidebar-er ul.menu-sidebar li.current a,
+            .main-container .sidebar-er ul.menu-sidebar li a:hover{
+                color: #679B49;
+            }
+            .main-container .sidebar ul.menu-sidebar li span{
+                margin-left: -12px;
+            }
+
+        .main-container .sidebar ul.submenu{
+            position: absolute;
+            width: 183px;
+            margin: 0;
+            left:203px;
+            top:7px;
+        }
+            .main-container .sidebar ul.submenu li{
+                background: url(public/images/linea-menu-sidebar.png) no-repeat left bottom;
+            }
+                .main-container .sidebar ul.submenu li a{
+                    margin-left: 7px;
+                    color: #7B8D9D !important;
+                }
+                .main-container .sidebar ul.submenu li a.current{
+                    color: #73D1B7 !important;
+                }
+                .main-container .sidebar-er ul.submenu li a.current{
+                    color: #679B49 !important;
+                }
+        .main-container .sidebar .image{
+            float: left;
+            margin: 0 10px 10px 0;
+        }
+    .main-container .sidebar ul.menu-sidebar2,
+    .main-container .sidebar ul.menu-sidebar2 li{
+        width: auto;
+    }
+
+/*------------------------------------------------------------------------------
+ - ESTILO QUE ESTAN EN EL "FOOTER"
+ -----------------------------------------------------------------------------*/
+.footer{
+    background: url(public/images/banda-footer.jpg) no-repeat top center;
+    text-align: center;
+    font-size: 80%;
+    padding-top:8px;
+    margin-top: 30px;
+}
+.footer-er{
+    background: url(public/images/er/bg-footer.jpg) no-repeat top center;
+    padding-top: 90px;
+    color: #4082BE;
+}
+
+/*------------------------------------------------------------------------------
+ - ESTILO PARA SEPARADORES
+ -----------------------------------------------------------------h------------*/
+
+/*------------------------------------------------------------------------------
+ - ESTILO PARA TABLAS
+ -----------------------------------------------------------------------------*/
+table{
+    background-color: #E4E4E6;
+    color:#6F6F71;
+}
+table thead{
+    background-color: #075886;
+    color: #fff;
+
+}
+table tbody td{
+    border: 1px solid #406D86;
+}
+    table tbody td input, table td.cell1{
+        margin: 0 !important;
+        padding: 0 !important;
+        text-align: center;
+    }
+table tbody tr.row-even td{
+    background-color: #DBEAEE;
+}
+
+
+/*------------------------------------------------------------------------------
+ - ESTILO PARA TABLA "OBRAS"
+ -----------------------------------------------------------------------------*/
+.table-obras{
+    width: 100%;
+    height: 300px;
+    overflow: auto;
+}
+.table-obras table{
+    background-color: #fff;
+    color: #4B6A80;
+}
+    .table-obras thead{
+        background-color: #2B4F69;
+        color: #fff !important;
+        font-weight: bold;
+    }
+    .table-obras tbody b,
+    .table-obras tbody  strong{
+        color: #2B4F69;
+    }
+    .table-obras thead td {
+        border: 1px solid #fff;
+    }
+    .table-obras tbody td {
+        border: 1px solid #C9D4D8;
+    }
+
+
+    
+/*------------------------------------------------------------------------------
+ - ESTILO PARA LOGIN
+ -----------------------------------------------------------------------------*/
+.contlogin{
+    width: 300px;
+    margin: 0 auto;
+    font-size: 90%;
+}
+    .contlogin fieldset{
+        float: left;
+        width: 300px;
+        height: auto;
+        padding: 5px;
+    }
+        .contlogin fieldset legend{
+            font-size: 100%;
+            margin-left: 10px;
+        }
+    .contlogin input{
+        width: 140px;
+    }
+    .contlogin label{
+        width: 100px;
+    }
+
+/*------------------------------------------------------------------------------
+ - ESTILO PARA FORMULARIO "CONTACTO"
+ -----------------------------------------------------------------------------*/
+.form-contact {
+    float: left;
+}
+.form-contact *{
+    font-size: 100% !important;
+}
+.form-contact label{
+    width: 140px;
+    font-size: 75%;
+}
+.form-contact input{
+    width: 230px;
+}
+.form-contact select{
+    width: 240px;
+}
+.form-contact textarea{
+    width: 230px;
+    height: 80px;
+    font-size: 120% !important;
+}
+.form-contact .input-code{
+    width: 70px;
+    text-align: center;
+}
+.form-contact .input-num{
+    width: 150px;
+}
+.form-contact button{
+    margin-right: 5px;
+}
+
+/*------------------------------------------------------------------------------
+ - ESTILO PARA FORMULARIO "TRABAJE CON NOSOTROS"
+ -----------------------------------------------------------------------------*/
+.form-tcn *{
+    font-size: 100% !important;
+}
+.form-tcn label{
+    width: 140px;
+    font-size: 75%;
+}
+.form-tcn input[type=text]{
+    width: 230px;
+}
+.form-tcn textarea{
+    width: 230px;
+    height: 80px;
+    font-size: 120% !important;
+}
+.form-tcn .input-code{
+    width: 50px !important;
+    margin-right: 5px;
+    text-align: center;
+}
+.form-tcn .input-num{
+    width: 168px !important;
+}
+.form-tcn .fnac{
+    width: 90px !important;
+    margin-right: 5px;
+    text-align: center;
+}
+
+/*------------------------------------------------------------------------------
+ - ESTILO PARA EL GRAFICO CRONOLOGICO
+ -----------------------------------------------------------------------------*/
+.chart{
+    width:948px;
+    height: 327px;
+    margin: 0 auto;
+    background: url(public/images/ajax-loader2.gif) no-repeat center;
+    border: 2px solid #666;
+}
+.chart img{
+    z-index: 0;
+}

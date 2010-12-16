@@ -1,36 +1,29 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
-class Products extends Controller {
+class Products extends MY_Controller {
 
     /* CONSTRUCTOR
      **************************************************************************/
     function __construct(){
-        parent::Controller();
+        parent::MY_Controller();
 
-        if( !$this->session->userdata('logged_in') ) redirect($this->config->item('base_url'));
+        if( !$this->session->userdata('logged_in') ) redirect('panel');
         
         $this->load->model("products_panel_model");
         $this->load->model("categories_model");
-
-        $this->_data = array(
-            'tlp_section'        =>  'panel/products_view.php',
-            'tlp_title'          =>  TITLE_INDEX,
-            'tlp_title_section'  => "Productos"
-        );
     }
-
-    /* PRIVATE PROPERTIES
-     **************************************************************************/
-    private $_data;
 
     /* PUBLIC FUNCTIONS
      **************************************************************************/
     public function index(){
-        $data = array_merge($this->_data, array(
-            'tlp_script'          => array('plugins_treeview', 'plugins_validator', 'plugins_picturegallery', 'plugins_fancybox', 'helpers_json', 'class_products'),
-            'tlp_script_special'  => array('plugins_tiny_mce', 'plugins_jqui_sortable'),
-            'treeview'            => $this->categories_model->get_treeview()
-        ));
-        $this->load->view('template_panel_view', $data);
+        $this->assets->add_js_group(array('plugins_treeview', 'plugins_validate', 'plugins_fancybox', 'helpers_json'));
+        $this->assets->add_js(array('plugins/picturegallery/picturegallery.min', 'class/products'));
+        $this->assets->add_js('plugins/jquery-ui.sortable/jquery-ui-1.8.2.custom.min', false);
+        $this->assets->add_js_group('plugins_tiny_mce', false);
+        $this->_render('panel/products_view', array(
+            'tlp_title'          =>  TITLE_INDEX,
+            'tlp_title_section'  => "Productos",
+            'treeview'           => $this->categories_model->get_treeview()
+        ), 'panel_view');
     }
 
 
@@ -41,7 +34,7 @@ class Products extends Controller {
          if( is_numeric($this->uri->segment(4)) ){
              $data['info'] = $this->categories_model->get_info($this->uri->segment(4));
          }
-         $this->load->view('panel/ajax/categorie_form_view', $data);
+         $this->_render('panel/ajax/categorie_form_view', $data, 'ajax_view');
      }
      
      public function ajax_form_products(){
@@ -50,7 +43,7 @@ class Products extends Controller {
          if( is_numeric($this->uri->segment(5)) ){
              $data['info'] = $this->products_panel_model->get_info($this->uri->segment(5));
          }         
-         $this->load->view('panel/ajax/products_form_view', $data);
+         $this->_render('panel/ajax/products_form_view', $data, 'ajax_view');
      }
      
      public function ajax_list_products(){
@@ -58,7 +51,7 @@ class Products extends Controller {
          $data = array(
              'List' => $this->products_panel_model->get_list($this->uri->segment(4))
          );
-         $this->load->view('panel/ajax/products_list_view', $data);
+         $this->_render('panel/ajax/products_list_view', $data, 'ajax_view');
      }
 
      public function ajax_categories_create(){
@@ -142,8 +135,8 @@ class Products extends Controller {
 
     public function ajax_upload_delete(){
         if( $_SERVER['REQUEST_METHOD']=="POST" ){
-            @unlink($_POST['au_filename_image']);
-            @unlink($_POST['au_filename_thumb']);
+            @unlink($this->input->post('au_filename_image'));
+            @unlink($this->input->post('au_filename_thumb'));
             die("ok");
         }
     }

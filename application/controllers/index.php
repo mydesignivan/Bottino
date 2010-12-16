@@ -1,22 +1,14 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
-class Index extends Controller {
+class Index extends MY_Controller {
 
     /* CONSTRUCTOR
      **************************************************************************/
     function __construct(){
-        parent::Controller();
+        parent::MY_Controller();
 
         $this->load->model('contents_model');
         $this->load->helpers('form');
-        $this->_data=array(
-            'listMenu'   => $this->contents_model->get_menu(),
-            'tlp_script' => array('plugins_cycle')
-        );
     }
-
-    /* PRIVATE PROPERTIES
-     **************************************************************************/
-    private $_data;
 
     /* PUBLIC FUNCTIONS
      **************************************************************************/
@@ -25,30 +17,27 @@ class Index extends Controller {
         $params = $this->_get_params($ref);
         $content = $this->contents_model->get_content($ref=="" ? "home" : null);
 
-        $tlp_script = array();
-        if( isset($content['sidebar']['gallery']) ) $tlp_script[] = 'plugins_adgallery';
+        if( isset($content['sidebar']['gallery']) ) $this->assets->add_js_group('plugins_adgallery');
         if( strpos($content['content'], '{chart}')!==FALSE ) {
-            $tlp_script[] = 'plugins_tooltip';
-            $tlp_script[] = 'class_chart';
+            $this->assets->add_js_group('plugins_tooltip');
+            $this->assets->add_js('class/chart');
         }
         
-        $data = array_merge($this->_data, array(
+        $this->_render('front/contents_view', array(
+            'listMenu'   => $this->contents_model->get_menu(),
             'tlp_title'            => $params['title'],
             'tlp_meta_description' => $params['meta_description'],
             'tlp_meta_keywords'    => $params['meta_keywords'],
-            'tlp_section'          => 'frontpage/contents_view.php',
-            'tlp_script'           => array_merge($this->_data['tlp_script'], $tlp_script),
             'reference'            => $params['reference'],
             'content'              => $content
         ));
-        $this->load->view('template_frontpage_view', $data);
     }
 
 
     /* AJAX FUNCTIONS
      **************************************************************************/
     public function ajax_show_formcv(){
-        $this->load->view('frontpage/ajax/cv_view');
+        $this->load->view('front/ajax/cv_view');
     }
     public function ajax_send_formcv(){
         if( $_SERVER['REQUEST_METHOD']=="POST" ){

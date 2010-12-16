@@ -66,42 +66,40 @@ define('ERR_UPLOAD_FILETYPE', 'El tipo de archivo es incompatible.');
 | EMAIL FORM CONTACTO
 |--------------------------------------------------------------------------
 */
-$msg = '
-    <b>Compa&ntilde;&iacute;a:</b> {company}<br />
-    <b>Nombre:</b> {name}<br />
-    <b>Direcci&oacute;n:</b> {address}<br />
-    <b>Ciudad:</b> {city}<br />
-    <b>C&oacute;digo Postal:</b> {postcode}<br />
-    <b>Pa&iacute;s:</b> {country}<br />
-    <b>Provincia:</b> {state}<br />
-    <b>E-Mail:</b> {email}<br />
-    <b>Telefono:</b> {phone}<br />
-    <b>Fax:</b> {fax}<br />
-    <b>Tema:</b> {theme}<br />
-    <hr color="#666666" />Mensaje:<br />{message}
-';
 define('EMAIL_CONTACT_SUBJECT', 'Formulario de Contacto');
-define('EMAIL_CONTACT_MESSAGE', $msg);
+define('EMAIL_CONTACT_MESSAGE', json_encode(array(
+    '<b>Compa&ntilde;&iacute;a:</b> {txtCompany}<br />',
+    '<b>Nombre:</b> {txtName}<br />',
+    '<b>Direcci&oacute;n:</b> {txtAddress}<br />',
+    '<b>Ciudad:</b> {txtCity}<br />',
+    '<b>C&oacute;digo Postal:</b> {txtPC}<br />',
+    '<b>Pa&iacute;s:</b> {country}<br />',
+    '<b>Provincia:</b> {cboState}<br />',
+    '<b>E-Mail:</b> {txtEmail}<br />',
+    '<b>Telefono:</b> {txtPhoneCode} - {txtPhoneNum}<br />',
+    '<b>Fax:</b> {txtFaxCode}-{txtFaxNum}<br />',
+    '<b>Tema:</b> {txtTheme}<br />',
+    '<b>Mensaje:</b> <br />{txtMessage}'
+)));
 
 /*
 |--------------------------------------------------------------------------
 | EMAIL FORM "TRABAJE CON NOSOTROS"
 |--------------------------------------------------------------------------
 */
-$msg = '
-    <b>Nombre y apellido:</b> {name}<br />
-    <b>Telefono:</b> {phone}<br />
-    <b>Email:</b> {email}<br />
-    <b>Direccion:</b> {address}<br />
-    <b>Fecha de nacimiento:</b> {fnac}<br />
-    <b>Sexo:</b> {sex}<br />
-    <b>Trabajar o representar:</b> {tipo}<br />
-    <b>Zona de interes:</b> {zone}<br />
-    <b>Experiencia:</b><br /> {experiencie}<br />
-    <b>Programas:</b><br /> {programs}
-';
 define('EMAIL_TCN_SUBJECT', 'Bottino - Curriculum Vitae');
-define('EMAIL_TNC_MESSAGE', $msg);
+define('EMAIL_TNC_MESSAGE', json_encode(array(
+    '<b>Nombre y apellido:</b> {txtName}<br />',
+    '<b>Telefono:</b> {txtPhoneCode}-{txtPhoneNum}<br />',
+    '<b>Email:</b> {txtEmail}<br />',
+    '<b>Direccion:</b> {txtAddess}<br />',
+    '<b>Fecha de nacimiento:</b> {txtNac}<br />',
+    '<b>Sexo:</b> {optSex}<br />',
+    '<b>Trabajar o representar:</b> {optTipo}<br />',
+    '<b>Zona de interes:</b> {txtZona}<br />',
+    '<b>Experiencia:</b><br /> {txtExperiencia}<br />',
+    '<b>Programas:</b><br /> {txtPrograms}'
+)));
 
 /*
 |--------------------------------------------------------------------------
@@ -123,14 +121,13 @@ define('EMAIL_CV_MESSAGE', $msg);
 | EMAIL FORM "CONSULTAS"
 |--------------------------------------------------------------------------
 */
-$msg = '
-    <b>Nombre:</b> {name}<br />
-    <b>Asunto:</b> {subject}<br />
-    <b>Email:</b> {email}<br />
-    <b>Consulta:</b> <br />{consult}
-';
 define('EMAIL_CONSULTS_SUBJECT', 'Formulario de Consulta');
-define('EMAIL_CONSULTS_MESSAGE', $msg);
+define('EMAIL_CONSULTS_MESSAGE', json_encode(array(
+    '<b>Nombre:</b> {txtName}<br />',
+    '<b>Asunto:</b> {txtSubject}<br />',
+    '<b>Email:</b> {txtEmail}<br />',
+    '<b>Consulta:</b> <br />{txtConsult}'
+)));
 
 /*
 |--------------------------------------------------------------------------
@@ -165,18 +162,18 @@ define('IMAGESIZE_SIDEBAR2_THUMB_H', 150);
 |--------------------------------------------------------------------------
 */
 define('TITLE_GLOBAL', 'Electromecánica Bottino'); // Titulo para todas las secciones
-define('TITLE_INDEX', '');
-define('TITLE_EMPRESA', ' - Empresa');
-define('TITLE_PRODUCTOS', ' - Productos');
-define('TITLE_ENERGIARENOVABLE', ' - Energía Renovable');
-define('TITLE_SERVICIOS', ' - Servicios');
-define('TITLE_REPRESENTACIONES', ' - Representaciones');
-define('TITLE_OBRAS', ' - Obras');
-define('TITLE_TESTIMONIALES', ' - Testimoniales');
-define('TITLE_SITEMAP', ' - Mapa del sitio');
-define('TITLE_CONTACTO', ' - Contacto');
-define('TITLE_CONSULTS', ' - Consulta');
-define('TITLE_TRABAJECONOSOTROS', ' - Trabaje con nosotors');
+define('TITLE_INDEX', 'Electromecánica Bottino');
+define('TITLE_EMPRESA', 'Electromecánica Bottino - Empresa');
+define('TITLE_PRODUCTOS', 'Electromecánica Bottino - Productos');
+define('TITLE_ENERGIARENOVABLE', 'Electromecánica Bottino - Energía Renovable');
+define('TITLE_SERVICIOS', 'Electromecánica Bottino - Servicios');
+define('TITLE_REPRESENTACIONES', 'Electromecánica Bottino - Representaciones');
+define('TITLE_OBRAS', 'Electromecánica Bottino - Obras');
+define('TITLE_TESTIMONIALES', 'Electromecánica Bottino - Testimoniales');
+define('TITLE_SITEMAP', 'Electromecánica Bottino - Mapa del sitio');
+define('TITLE_CONTACTO', 'Electromecánica Bottino - Contacto');
+define('TITLE_CONSULTS', 'Electromecánica Bottino - Consulta');
+define('TITLE_TRABAJECONOSOTROS', 'Electromecánica Bottino - Trabaje con nosotors');
 
 
 
