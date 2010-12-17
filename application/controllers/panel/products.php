@@ -16,7 +16,7 @@ class Products extends MY_Controller {
      **************************************************************************/
     public function index(){
         $this->assets->add_js_group(array('plugins_treeview', 'plugins_validate', 'plugins_fancybox', 'helpers_json'));
-        $this->assets->add_js(array('plugins/picturegallery/picturegallery.min', 'class/products'));
+        $this->assets->add_js(array('plugins/picturegallery/picturegallery', 'class/products'));
         $this->assets->add_js('plugins/jquery-ui.sortable/jquery-ui-1.8.2.custom.min', false);
         $this->assets->add_js_group('plugins_tiny_mce', false);
         $this->_render('panel/products_view', array(

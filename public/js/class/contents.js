@@ -164,7 +164,8 @@ var Contents = new (function(){
                 alert("ERROR AJAX:\n\n"+data);
                 _working=false;
             }
-             $(document).scrollTop(0);
+            $(document).scrollTop(0);
+            PictureGallery.reset();
         });
 
         return false;

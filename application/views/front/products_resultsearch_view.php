@@ -2,25 +2,22 @@
 
 <div class="contents">
 <?php
-if( count($info['listProducts'])>0 ){
-$titlecatold='';
+if( count($listResult)>0 ){
+$title='';
+$search = urlencode($this->input->post('txtSearch'));
 ?>
-
     <h1 class="title">Resultado de b&uacute;queda</h1>
 
-<?php foreach( $info['listProducts'] as $row ){
-?>
+<?php foreach( $listResult as $row ){?>
     <div class="trow">
 <?php
-    if( $titlecatold != $row['categorie_name'] ) {
-        echo '<h4 class="title">'.$row['categorie_name'].'</h4>';
-    }
+    if( $title != $row['title'] ) echo '<h4 class="title">'.$row['title'].'</h4>';
 ?>
-        <a href="<?=site_url('productos/leermas/'.urlencode($this->input->post('txtSearch')).'/'.$row['categories_id'])?>" class="link-inherit"><span class="title-product"><?=$row['product_name']?></span>&nbsp;<?=character_limiter($row['product_content'],20)?></a>
+        <a href="<?=site_url('productos/leermas/'.$row['content_id'].'/'.$search)?>" class="link-inherit"><?=character_limiter(strip_tags($row['content']),20)?></a>
     </div>
 
 <?php 
-$titlecatold = $row['categorie_name'];
+$title = $row['title'];
 }?>
 
 <?php }else{?>

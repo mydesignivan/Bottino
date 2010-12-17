@@ -43,7 +43,7 @@
             $n=-1;
             foreach( $content['sidebar']['gallery'] as $row ){$n++;?>
                     <li>
-                        <a href="<?=UPLOAD_PATH_SIDEBAR.$row['image']?>"><img src="<?=UPLOAD_PATH_SIDEBAR.$row['thumb']?>" title="<?php if( strpos($row['title'], '{')===false ) echo $row['title']?>" alt="<?//=$row['thumb']?>" class="image<?=$n?>" /></a>
+                        <a href="<?=UPLOAD_PATH_SIDEBAR.$row['image']?>"><img src="<?=UPLOAD_PATH_SIDEBAR.$row['thumb']?>" title="<?php if( strpos($row['title'], '{')===false ) echo ucwords(strtolower($row['title']))?>" alt="<?//=$row['thumb']?>" class="image<?=$n?>" /></a>
                     </li>
             <?php }?>
                 </ul>

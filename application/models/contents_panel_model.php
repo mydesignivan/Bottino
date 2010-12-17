@@ -136,7 +136,8 @@ class Contents_panel_model extends Model {
         $initorder = $this->input->post('initorder');
         $rows = json_decode($this->input->post('rows'));
 
-        $res = $this->db->query('SELECT `order` FROM '.TBL_CONTENTS.' WHERE content_id='.$initorder)->row_array();
+        $this->db->select('order');
+        $res = $this->db->get_where(TBL_CONTENTS, array('content_id'=>$initorder))->row_array();
         $order = $res['order'];
 
         //print_array($rows, true);

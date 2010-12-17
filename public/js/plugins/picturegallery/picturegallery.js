@@ -113,6 +113,13 @@ var PictureGallery = new (function(){
        return data;
    };
 
+   this.reset = function(){
+       array_images_del = new Array();
+       $(params.sel_gallery + ' li').each(function(){
+           $(this).data('au-newimg', false);
+       });
+   };
+
 
    /* PRIVATE PROPERTIES
     **************************************************************************/
@@ -187,12 +194,16 @@ var PictureGallery = new (function(){
             $(params.sel_button)[0].disabled=false;
             $(params.sel_ajaxloader).hide();
             params.callback();
-           
+            var a=$(params.sel_gallery).parent('div');
+            a.scrollTop(a[0].scrollHeight);
+
         }else {
             var d=$(params.sel_msgerror);
-            if( d.length>0 ) d.html(data['error'][0]['message']);
+            if( d.length>0 ) d.html(data['error'][0]['message']).show();
             else alert(data['error'][0]['message']);
         }
+
+        $(params.sel_button)[0].disabled=false;
 
         return false;
     };

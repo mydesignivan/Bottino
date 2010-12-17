@@ -32,8 +32,8 @@
                     <li>
                         <a href="<?=UPLOAD_PATH_SIDEBAR.$row['image']?>" class="jq-image" rel="group" title="<?=$row['title']?>"><img src="<?=UPLOAD_PATH_SIDEBAR.$row['thumb']?>" alt="<?=$row['thumb']?>" width="130" height="90" /></a>
                         <div class="d1 clear">
-                            <a href="javascript:void(0)" class="link2 fleft jq-removeimg"><img src="images/icon_delete.png" alt="" width="16" height="16" />Quitar</a>
-                            <a href="javascript:void(0)" class="fright handle"><img src="images/icon_arrow_move2.png" alt="" width="16" height="16" /></a>
+                            <a href="javascript:void(0)" class="link2 fleft jq-removeimg"><img src="public/images/icon_delete.png" alt="" width="16" height="16" />Quitar</a>
+                            <a href="javascript:void(0)" class="fright handle"><img src="public/images/icon_arrow_move2.png" alt="" width="16" height="16" /></a>
                         </div>
                         <div class="trow">
                             <input type="text" class="pg-title" value="<?=$row['title']?>" />
@@ -45,8 +45,8 @@
                     <li>
                         <a href="" class="jq-image" rel="group"><img src="" alt="" width="" height="" /></a>
                         <div class="d1 clear">
-                            <a href="javascript:void(0)" class="link2 fleft jq-removeimg"><img src="images/icon_delete.png" alt="" width="16" height="16" />Quitar</a>
-                            <a href="javascript:void(0)" class="fright handle"><img src="images/icon_arrow_move2.png" alt="" width="16" height="16" /></a>
+                            <a href="javascript:void(0)" class="link2 fleft jq-removeimg"><img src="public/images/icon_delete.png" alt="" width="16" height="16" />Quitar</a>
+                            <a href="javascript:void(0)" class="fright handle"><img src="public/images/icon_arrow_move2.png" alt="" width="16" height="16" /></a>
                         </div>
                         <div class="trow">
                             <input type="text" class="pg-title" />
@@ -62,7 +62,7 @@
             <div class="span-14 last">
                 <input type="file" size="22" name="txtUploadFile" id="txtUploadFile" />&nbsp;
                 <button id="btnUpload" type="button" onclick="PictureGallery.upluad()" class="gallery-panel-upload">Subir</button>&nbsp;
-                <img id="ajax-loader1" src="images/ajax-loader4.gif" alt="Loading..." width="43" height="11" class="hide" />
+                <img id="ajax-loader1" src="public/images/ajax-loader4.gif" alt="Loading..." width="43" height="11" class="hide" />
             </div>
             <div class="clear span-10"><label class="label-leyend">M&aacute;ximo 2 megas por foto (gif, jpg, jpeg o png)</label></div>
 

@@ -20,7 +20,7 @@ class Contents_model extends Model {
 
     public function get_content($ref=null){
         if( !is_null($ref) ){
-            $where = array('reference'=>$ref);
+            $where = !is_numeric($ref) ? array('reference'=>$ref) : array('content_id'=>$ref);
         }else{
             $segs = $this->uri->segment_array();
             $level = count($segs);
@@ -103,11 +103,11 @@ class Contents_model extends Model {
         $output.= $this->_get_menu();
         $output.= "</ul>";
 
-        $i = strpos($output, '</li>', strpos($output, '>Productos<'));
+        /*$i = strpos($output, '</li>', strpos($output, '>Productos<'));
         $part1 = substr($output, 0, $i);
         $part2 = substr($output, $i);
 
-        $output = $part1 .'<ul class="hide">'. $this->_get_menu_catalog(). '</ul>'. $part2;
+        $output = $part1 .'<ul class="hide">'. $this->_get_menu_catalog(). '</ul>'. $part2;*/
 
         return $output;
     }
@@ -130,6 +130,16 @@ class Contents_model extends Model {
         $this->db->select('content');
         $row = $this->db->get_where(TBL_CONTENTS, array('content_id'=>15))->row_array();
         return $row['content'];
+    }
+
+    public function search(){
+        require(APPPATH . 'config/database.php');
+
+        $search = $this->input->post('txtSearch');
+
+        $query = $this->db->query("SELECT `content_id`, `title`, `content` FROM (`".$db['default']['dbprefix']."contents`) WHERE `content_id` <> 23 AND (`title` LIKE '%".$search."%' OR `content` LIKE '%".$search."%') ORDER BY `order` asc");
+
+        return $query->result_array();
     }
 
 

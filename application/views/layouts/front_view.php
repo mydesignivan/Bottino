@@ -23,7 +23,6 @@
         <?php
             echo $this->template->yield();
             if( isset($content['sidebar']) && @$content['content_id']!=23 && strpos(@$content['content'], '{chart}')===FALSE ) require(APPPATH . 'views/includes/sidebar_inc.php');
-            if( isset($info['sidebar']) ) require(APPPATH . 'views/includes/sidebar_products_inc.php');
         ?>
         </div>
         <div class="main-container-bottom"></div>

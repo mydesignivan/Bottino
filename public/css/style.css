@@ -594,7 +594,7 @@ table tbody tr.row-even td{
     height: 327px;
     margin: 0 auto;
     background: url(public/images/ajax-loader2.gif) no-repeat center;
-    border: 2px solid #666;
+    /*border: 2px solid #666;*/
 }
 .chart img{
     z-index: 0;

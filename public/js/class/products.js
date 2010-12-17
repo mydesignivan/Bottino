@@ -91,6 +91,7 @@ var Products = new (function(){
      };
 
      this.prueba = function() {
+         alert(PictureGallery.get_images_new());
      };
 
 
@@ -244,9 +245,6 @@ var Products = new (function(){
                         tinyMCE.get('txtContent').setContent('');
                     }else{
                         _categorie_name = b;
-                        var img = $('#cont-image-1 .ajaxupload-thumb');
-                        img.attr('src', img.attr('src').replace('.tmp/', ''));
-                        $('#image_thumb_old').attr('value', img.attr('src'));
                     }
                 });
             }else{
@@ -255,6 +253,7 @@ var Products = new (function(){
                 _working=false;
             }
             $(document).scrollTop(0);
+            PictureGallery.reset();
         });
 
         return false;

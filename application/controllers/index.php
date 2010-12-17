@@ -15,8 +15,16 @@ class Index extends MY_Controller {
     public function index(){
         $ref = $this->uri->segment(1);
         $params = $this->_get_params($ref);
-        $content = $this->contents_model->get_content($ref=="" ? "home" : null);
 
+        if( $ref=="productos" && $this->uri->segment(2)=="leermas" ){
+            $ref = $this->uri->segment(3);
+        }else{
+            $ref = $ref=="" ? "home" : null;
+        }
+
+        $content = $this->contents_model->get_content($ref);
+        if( $content=="" ) redirect(base_url());
+            
         if( isset($content['sidebar']['gallery']) ) $this->assets->add_js_group('plugins_adgallery');
         if( strpos($content['content'], '{chart}')!==FALSE ) {
             $this->assets->add_js_group('plugins_tooltip');
@@ -33,6 +41,18 @@ class Index extends MY_Controller {
         ));
     }
 
+    public function search(){
+        if( $_SERVER['REQUEST_METHOD']=="POST" ){
+            $this->load->helper('text');
+            $this->_render('front/products_resultsearch_view', array(
+                'listMenu'             => $this->contents_model->get_menu(),
+                'tlp_title'            => TITLE_PRODUCTOS,
+                'tlp_meta_description' => META_DESCRIPTION_PRODUCTOS,
+                'tlp_meta_keywords'    => META_KEYWORDS_PRODUCTOS,
+                'listResult'           => $this->contents_model->search()
+            ));
+        }
+    }
 
     /* AJAX FUNCTIONS
      **************************************************************************/

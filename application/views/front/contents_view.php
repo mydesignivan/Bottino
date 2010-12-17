@@ -15,10 +15,21 @@ if( @$content!='' ){
     $html = @$content['content'];
 
     if( strpos($html, '{chart}')!==FALSE ){
-        require(APPPATH . 'views/frontpage/chart_view.php');
+        require(APPPATH . 'views/front/chart_view.php');
 
     }else{
         $var = extract_var($html, '{', '}');
+
+        if( $this->uri->segment(2)=="leermas" ) {
+            $strsearch = $this->uri->segment(4);
+            $html = preg_replace("/".$strsearch."/i", '<span class="resalt">'.$strsearch.'</span>', $html);
+            $strsearch = preg_replace('/á/i', 'a', $strsearch);
+            $strsearch = preg_replace('/é/i', 'e', $strsearch);
+            $strsearch = preg_replace('/í/i', 'i', $strsearch);
+            $strsearch = preg_replace('/ó/i', 'o', $strsearch);
+            $strsearch = preg_replace('/ú/i', 'u', $strsearch);
+            $html = preg_replace("/".$strsearch."/i", '<span class="resalt">'.$strsearch.'</span>', $html);
+        }
 
         echo $html;
 
