@@ -18,7 +18,8 @@ class Trabajeconosotros extends MY_Controller {
         $this->assets->add_js_group(array('plugins_datepicker', 'plugins_validate'));
         $this->assets->add_js(array('plugins/formatnumber/formatnumber.min', 'class/tcn'));
         $this->_render('front/trabajeconosotros_view', array(
-            'listMenu'    => $this->contents_model->get_menu(),
+            'listMenu'             => $this->contents_model->get_menu(),
+            'content_footer'       => $this->contents_model->get_content('footer'),
             'tlp_title'            => TITLE_TRABAJECONOSOTROS,
             'tlp_meta_description' => META_DESCRIPTION_TRABAJECONOSOTROS,
             'tlp_meta_keywords'    => META_KEYWORDS_TRABAJECONOSOTROS

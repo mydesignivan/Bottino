@@ -86,6 +86,11 @@ class Contents_model extends Model {
                 if( $query->num_rows>0 ) $content['sidebar']['gallery'] = $query->result_array();
             }
 
+            if( $query->num_rows==0 ){
+                $query = $this->db->get_where(TBL_GALLERY_CONTENTS, array('content_id'=>$content['parent_id']));
+                if( $query->num_rows>0 ) $content['sidebar']['gallery'] = $query->result_array();
+            }
+
             $content['title'] = $this->_get_title($content['content_id']);
             if( count($content['title'])>1 ){
                 array_pop($content['title']);

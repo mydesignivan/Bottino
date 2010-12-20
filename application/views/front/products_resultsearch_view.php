@@ -13,7 +13,7 @@ $search = urlencode($this->input->post('txtSearch'));
 <?php
     if( $title != $row['title'] ) echo '<h4 class="title">'.$row['title'].'</h4>';
 ?>
-        <a href="<?=site_url('productos/leermas/'.$row['content_id'].'/'.$search)?>" class="link-inherit"><?=character_limiter(strip_tags($row['content']),20)?></a>
+        <a href="<?=site_url('productos/leermas/'.$row['content_id'].'/'.$search)?>" class="link-inherit"><?=character_limiter(strip_tags($row['content']),100)?></a>
     </div>
 
 <?php 

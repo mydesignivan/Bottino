@@ -32,7 +32,8 @@ class Index extends MY_Controller {
         }
         
         $this->_render('front/contents_view', array(
-            'listMenu'   => $this->contents_model->get_menu(),
+            'listMenu'             => $this->contents_model->get_menu(),
+            'content_footer'       => $this->contents_model->get_content('footer'),
             'tlp_title'            => $params['title'],
             'tlp_meta_description' => $params['meta_description'],
             'tlp_meta_keywords'    => $params['meta_keywords'],
@@ -56,36 +57,6 @@ class Index extends MY_Controller {
 
     /* AJAX FUNCTIONS
      **************************************************************************/
-    public function ajax_show_formcv(){
-        $this->load->view('front/ajax/cv_view');
-    }
-    public function ajax_send_formcv(){
-        if( $_SERVER['REQUEST_METHOD']=="POST" ){
-            $file = $_FILES['txtCV'];
-            
-            if( is_uploaded_file($file['tmp_name']) ){
-                $filename = UPLOAD_PATH_CV . get_filename($file['name']);
-                if( move_uploaded_file($file['tmp_name'], $filename) ){
-                    chmod($filename, 0777);
-                    
-                    $message = EMAIL_CV_MESSAGE;
-                    $message = str_replace('{name}', $this->input->post('txtName'), $message);
-                    $message = str_replace('{email}', $this->input->post('txtEmail'), $message);
-                    $message = str_replace('{comment}', nl2br($this->input->post('txtComment')), $message);
-
-                    $this->load->library('email');
-                    $this->email->from($this->input->post('txtEmail'), $this->input->post('txtName'));
-                    $this->email->to(EMAIL_CV_TO);
-                    $this->email->subject(EMAIL_CV_SUBJECT);
-                    $this->email->message($message);
-                    $this->email->attach($filename);
-                    echo $this->email->send() ? "send" : "notsend";
-                }
-            }else echo "notupload";
-        }
-        die();
-    }
-
 
     /* PRIVATE FUNCTIONS
      **************************************************************************/
@@ -97,6 +68,62 @@ class Index extends MY_Controller {
                      'meta_description' => META_DESCRIPTION_INDEX,
                      'meta_keywords'    => META_KEYWORDS_INDEX,
                      'reference'        => 'home'
+                 );
+             break;
+             case 'empresa':
+                 return array(
+                     'title'            => TITLE_EMPRESA,
+                     'meta_description' => META_DESCRIPTION_EMPRESA,
+                     'meta_keywords'    => META_KEYWORDS_EMPRESA,
+                     'reference'        => 'empresa'
+                 );
+             break;
+             case 'productos':
+                 return array(
+                     'title'            => TITLE_PRODUCTOS,
+                     'meta_description' => META_DESCRIPTION_PRODUCTOS,
+                     'meta_keywords'    => META_KEYWORDS_PRODUCTOS,
+                     'reference'        => 'productos'
+                 );
+             break;
+             case 'energia-renovable':
+                 return array(
+                     'title'            => TITLE_ENERGIARENOVABLE,
+                     'meta_description' => META_DESCRIPTION_ENERGIARENOVABLE,
+                     'meta_keywords'    => META_KEYWORDS_ENERGIARENOVABLE,
+                     'reference'        => 'energia-renovable'
+                 );
+             break;
+             case 'servicios':
+                 return array(
+                     'title'            => TITLE_SERVICIOS,
+                     'meta_description' => META_DESCRIPTION_SERVICIOS,
+                     'meta_keywords'    => META_KEYWORDS_SERVICIOS,
+                     'reference'        => 'servicios'
+                 );
+             break;
+             case 'representaciones':
+                 return array(
+                     'title'            => TITLE_REPRESENTACIONES,
+                     'meta_description' => META_DESCRIPTION_REPRESENTACIONES,
+                     'meta_keywords'    => META_KEYWORDS_REPRESENTACIONES,
+                     'reference'        => 'representaciones'
+                 );
+             break;
+             case 'obras':
+                 return array(
+                     'title'            => TITLE_OBRAS,
+                     'meta_description' => META_DESCRIPTION_OBRAS,
+                     'meta_keywords'    => META_KEYWORDS_OBRAS,
+                     'reference'        => 'obras'
+                 );
+             break;
+             case 'testimoniales':
+                 return array(
+                     'title'            => TITLE_TESTIMONIALES,
+                     'meta_description' => META_DESCRIPTION_TESTIMONIALES,
+                     'meta_keywords'    => META_KEYWORDS_TESTIMONIALES,
+                     'reference'        => 'testimoniales'
                  );
              break;
          }

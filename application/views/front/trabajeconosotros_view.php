@@ -73,4 +73,6 @@
             <button type="submit">Enviar</button>
         </div>
     </form>
+
+    <input type="hidden" id="currentYear" value="<?=date('Y')?>" />
 </div>

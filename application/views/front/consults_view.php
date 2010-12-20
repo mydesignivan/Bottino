@@ -1,7 +1,11 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');?>
 
 <div class="contents">
-    <h1 class="title">Consultas</h1>
+    <div class="span-10">
+        <h1 class="title fleft">Consultas</h1>
+        <a href="http://www.bottinosa.com" target="_blank" class="link-bottsubf">Bottino Subfactory</a>
+    </div>
+    <div class="clear"></div>
 
     <?php if( $this->session->flashdata('status_sendmail')=="ok" ){?>
     <br />

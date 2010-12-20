@@ -14,7 +14,8 @@ class Consultas extends MY_Controller {
         $this->assets->add_js_group('plugins_validate');
         $this->assets->add_js('class/consults');
         $this->_render('front/consults_view', array(
-            'listMenu'    => $this->contents_model->get_menu(),
+            'listMenu'             => $this->contents_model->get_menu(),
+            'content_footer'       => $this->contents_model->get_content('footer'),
             'tlp_title'            => TITLE_CONSULTS,
             'tlp_meta_description' => META_DESCRIPTION_CONSULTS,
             'tlp_meta_keywords'    => META_KEYWORDS_CONSULTS

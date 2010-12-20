@@ -66,7 +66,7 @@ define('ERR_UPLOAD_FILETYPE', 'El tipo de archivo es incompatible.');
 | EMAIL FORM CONTACTO
 |--------------------------------------------------------------------------
 */
-define('EMAIL_CONTACT_SUBJECT', 'Formulario de Contacto');
+define('EMAIL_CONTACT_SUBJECT', 'EBHSA - Formulario de Contacto');
 define('EMAIL_CONTACT_MESSAGE', json_encode(array(
     '<b>Compa&ntilde;&iacute;a:</b> {txtCompany}<br />',
     '<b>Nombre:</b> {txtName}<br />',
@@ -87,7 +87,7 @@ define('EMAIL_CONTACT_MESSAGE', json_encode(array(
 | EMAIL FORM "TRABAJE CON NOSOTROS"
 |--------------------------------------------------------------------------
 */
-define('EMAIL_TCN_SUBJECT', 'Bottino - Curriculum Vitae');
+define('EMAIL_TCN_SUBJECT', 'EBHSA - Curriculum Vitae');
 define('EMAIL_TNC_MESSAGE', json_encode(array(
     '<b>Nombre y apellido:</b> {txtName}<br />',
     '<b>Telefono:</b> {txtPhoneCode}-{txtPhoneNum}<br />',
@@ -103,25 +103,10 @@ define('EMAIL_TNC_MESSAGE', json_encode(array(
 
 /*
 |--------------------------------------------------------------------------
-| EMAIL FORM CV
-|--------------------------------------------------------------------------
-*/
-$msg = '
-    <b>Nombre:</b> {name}<br />
-    <b>E-Mail:</b> {email}<br />
-    <b>Comentario:</b> {email}<br />
-    {comment}
-';
-define('EMAIL_CV_SUBJECT', 'Grundfos - Curriculum Vitae');
-define('EMAIL_CV_TO', 'iwmattoni@gmail.com');
-define('EMAIL_CV_MESSAGE', $msg);
-
-/*
-|--------------------------------------------------------------------------
 | EMAIL FORM "CONSULTAS"
 |--------------------------------------------------------------------------
 */
-define('EMAIL_CONSULTS_SUBJECT', 'Formulario de Consulta');
+define('EMAIL_CONSULTS_SUBJECT', 'EBHSA - Formulario de Consulta');
 define('EMAIL_CONSULTS_MESSAGE', json_encode(array(
     '<b>Nombre:</b> {txtName}<br />',
     '<b>Asunto:</b> {txtSubject}<br />',

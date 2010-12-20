@@ -1,5 +1,5 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');?>
-<div class="sidebar<?php if( $ER ) echo ' sidebar-er'?>">
+<div class="sidebar<?php if( @$ER ) echo ' sidebar-er'?>">
 <?php if( isset($content['sidebar']['menu']) ) {
     $css = $content['sidebar']['has_submenu']==0 ? " menu-sidebar2" : "";
 ?>

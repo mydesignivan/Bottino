@@ -712,6 +712,8 @@ class browser extends uploader {
     protected function backMsg($message) {
         $act = isset($this->get['act']) ? $this->get['act'] : "browser";
 
+        echo $message."<br>";
+
         if (!method_exists($this, "act_$act"))
             $act = "browser";
         if ($act == "browser")

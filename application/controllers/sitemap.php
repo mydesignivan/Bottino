@@ -17,7 +17,8 @@ class Sitemap extends MY_Controller {
             'tlp_title'            => TITLE_SITEMAP ,
             'tlp_meta_description' => META_DESCRIPTION_SITEMAP,
             'tlp_meta_keywords'    => META_KEYWORDS_SITEMAP,
-            'listMenu'             => $this->contents_model->get_menu()
+            'listMenu'             => $this->contents_model->get_menu(),
+            'content_footer'       => $this->contents_model->get_content('footer')
         ));
     }
 

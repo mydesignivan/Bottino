@@ -30,7 +30,7 @@ var TinyMCE_init = {
     },
 
     relative_urls : false,
-    document_base_url : './',
+    document_base_url : $('base').attr('href'),
     
     forced_root_block : false,
     force_br_newlines : true,

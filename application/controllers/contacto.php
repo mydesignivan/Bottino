@@ -20,6 +20,7 @@ class Contacto extends MY_Controller {
         $this->assets->add_js(array('plugins/formatnumber/formatnumber.min', 'class/account'));
         $this->_render('front/contact_view', array(
             'listMenu'             => $this->contents_model->get_menu(),
+            'content_footer'       => $this->contents_model->get_content('footer'),
             'tlp_title'            => TITLE_CONTACTO,
             'tlp_meta_description' => META_DESCRIPTION_CONTACTO,
             'tlp_meta_keywords'    => META_KEYWORDS_CONTACTO,

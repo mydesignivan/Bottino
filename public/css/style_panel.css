@@ -99,7 +99,7 @@ fieldset.fieldset-form{
 fieldset.gallery-panel{
     float:left;
     width: 638px;
-    height: 182px;
+    height: 202px;
     padding-top: 10px;
     margin-bottom: 10px;
     padding: 10px;
@@ -112,7 +112,7 @@ fieldset.gallery-panel{
     fieldset.gallery-panel .cont{
         float: left;
         width: 636px;
-        height: 160px;
+        height: 180px;
         position: relative;
         overflow: auto;
         /*border: 1px solid red;*/

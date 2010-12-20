@@ -13,8 +13,8 @@
     <?php echo $this->assets->js(); ?>
     <!--[if IE 6]><script type="text/javascript" src="public/js/helpers/DD_belatedPNG.js"></script><![endif]-->
 </head>
-<body>
 <?php $ER = $this->uri->segment(1)=='energia-renovable';?>
+<body<?php if( $ER ) echo ' class="body-er"';?>>
     <div class="container">
         <div class="span-24 last header"> 
         <?php require(APPPATH . 'views/includes/header_inc.php')?>

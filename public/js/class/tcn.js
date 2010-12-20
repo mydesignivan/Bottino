@@ -18,6 +18,7 @@ var TCN = new (function(){
 
         formatNumber.init('#txtPhoneNum, #txtPhoneCode');
 
+        var y = $('#currentYear').val();
         $("#txtNac").datepicker({
             showOn          : 'both',
             buttonImage     : 'public/images/1288282754_schedule.png',
@@ -25,6 +26,7 @@ var TCN = new (function(){
             dateFormat      : 'dd-mm-yy',
             changeMonth     : true,
             changeYear      : true,
+            yearRange       :  (y-80)+':'+y,
             monthNamesShort : ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
         });
 

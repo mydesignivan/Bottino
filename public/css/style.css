@@ -44,6 +44,10 @@ h1.title{
     color:#fff;
 }
 
+body.body-er{
+    background: transparent url(public/images/bg-energia-renovable.jpg) repeat-x top center;
+}
+
 /*------------------------------------------------------------------------------
  - ESTILO PARA MENSAJES DEL VALIDADOR
  -----------------------------------------------------------------------------*/
@@ -88,6 +92,12 @@ a.link-img:hover{color:#646567 !important;}
 
 .link-inherit, .link-inherit:link, .link-inherit:visited, .link-inherit:hover{
     color: inherit;
+}
+a.link-bottsubf{
+    float: right;
+    font-weight: bold;
+    color:#062945;
+    margin-top: 3px;
 }
 
 /*------------------------------------------------------------------------------
@@ -399,6 +409,7 @@ button{
         }
             .main-container .sidebar ul.submenu li{
                 background: url(public/images/linea-menu-sidebar.png) no-repeat left bottom;
+                white-space: nowrap;
             }
                 .main-container .sidebar ul.submenu li a{
                     margin-left: 7px;
