@@ -1,0 +1,12 @@
+.list-sitemap a{
+    font-size: 100%;
+}
+.list-sitemap ul{
+    display: block !important;
+}
+.list-sitemap ul li{
+    list-style-type: circle !important;
+}
+.list-sitemap ul li li{
+    list-style-type: square !important;
+}

@@ -18,7 +18,7 @@ if( @$content!='' ){
         require(APPPATH . 'views/front/chart_view.php');
 
     }else{
-        $var = extract_var($html, '{', '}');
+        $var = extract_var($html, '{', '}', true);
 
         if( $this->uri->segment(2)=="leermas" ) {
             $strsearch = $this->uri->segment(4);
@@ -34,8 +34,9 @@ if( @$content!='' ){
         echo $html;
 
         foreach( $var as $val){
-            $this->view('frontpage/'.$val.'_view');
+            $this->view('front/'. strip_tags(trim($val['val'])) .'_view');
         }
+
     }
 
 }

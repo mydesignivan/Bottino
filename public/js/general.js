@@ -11,7 +11,7 @@ $(function(){
         a.adGallery({
             width : 380,
             display_next_and_prev : false,
-            loader_image: 'images/loader.gif',
+            loader_image: 'public/images/loader.gif',
             effect : 'fade'
         });
     }
@@ -28,7 +28,7 @@ $(function(){
 
 var CV = {
     open : function(){
-        var div = $('<div class="form-cv"><div class="top"></div><div class="middle"><div class="align-center"><img src="images/ajax-loader2.gif" alt="Cargando..." width="100" height="100" /></div></div><div class="bottom"></div></div>');
+        var div = $('<div class="form-cv"><div class="top"></div><div class="middle"><div class="align-center"><img src="public/images/ajax-loader2.gif" alt="Cargando..." width="100" height="100" /></div></div><div class="bottom"></div></div>');
         div.modal({
             opacity  : '50',
             persist  : true,
@@ -89,8 +89,8 @@ var CV = {
 
         switch(content){
             case "notupload": CV._show_message(false, 'El archivo no puede superar los 2Mb.'); break;
-            case "send": CV._show_message2('<img src="images/icon-success.png" alt="" width="32" height="32" /> El email ha sido enviado con &eacute;xito.'); break;
-            case "notsend": CV._show_message2('<img src="images/icon-error.png" alt="" width="32" height="32" /> El email no ha podido ser enviado.'); break;
+            case "send": CV._show_message2('<img src="public/images/icon-success.png" alt="" width="32" height="32" /> El email ha sido enviado con &eacute;xito.'); break;
+            case "notsend": CV._show_message2('<img src="public/images/icon-error.png" alt="" width="32" height="32" /> El email no ha podido ser enviado.'); break;
             default: alert("ERROR AJAX:\n\n"+content);
         }
         return false;

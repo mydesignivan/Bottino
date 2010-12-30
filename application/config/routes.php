@@ -52,7 +52,6 @@ $route['energia-renovable/:any'] = "index/index/$1";
 $route['servicios/:any'] = "index/index/$1";
 $route['representaciones/:any'] = "index/index/$1";
 $route['obras/:any'] = "index/index/$1";
-$route['testimoniales'] = "index/index/$1";
 
 /*$route['productos/leermas/:any'] = "productos/index/$1";
 $route['productos/search'] = "productos/search";

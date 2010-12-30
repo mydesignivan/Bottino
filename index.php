@@ -1,4 +1,12 @@
 <?php
+
+ini_set('upload_max_filesize', '10M');
+ini_set('post_max_size', '10M');
+ini_set('max_execution_time', '100');
+ini_set('max_input_time', '60');
+ini_set('memory_limit', '10M');
+ini_set('upload_tmp_dir', './tmp/');
+
 /*
 |---------------------------------------------------------------
 | PHP ERROR REPORTING LEVEL

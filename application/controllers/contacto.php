@@ -18,6 +18,7 @@ class Contacto extends MY_Controller {
 
         $this->assets->add_js_group(array('plugins_validate'));
         $this->assets->add_js(array('plugins/formatnumber/formatnumber.min', 'class/account'));
+        $this->assets->add_css('view_contact');
         $this->_render('front/contact_view', array(
             'listMenu'             => $this->contents_model->get_menu(),
             'content_footer'       => $this->contents_model->get_content('footer'),

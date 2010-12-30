@@ -1,0 +1,34 @@
+.tbl-testimoniales{
+    font-size: 90%;
+    margin-top: 10px;
+    clear: both;
+}
+    .tbl-testimoniales thead{
+        font-weight: bold;
+    }
+.tbl-testimoniales .cell1{
+    width: 20px;
+}
+.tbl-testimoniales .cell2{
+    width: 260px;
+}
+.tbl-testimoniales .cell3{
+    width: 150px;
+}
+.tbl-testimoniales .cell4,
+.tbl-testimoniales .cell5,
+.tbl-testimoniales .cell6{
+    width: 80px;
+    text-align: center;
+}
+
+/*------------------------------------------------------------------------------
+ - ESTILO PARA FORMULARIO
+ -----------------------------------------------------------------------------*/
+.form-testimoniales label{
+    width: 120px;
+    font-size: 90%;
+}
+.form-testimoniales input[type=text]{
+    width: 230px;
+}

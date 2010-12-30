@@ -13,6 +13,7 @@ class Sitemap extends MY_Controller {
     /* PUBLIC FUNCTIONS
      **************************************************************************/
     public function index(){
+        $this->assets->add_css('view_sitemap');
         $this->_render('front/sitemap_view', array(
             'tlp_title'            => TITLE_SITEMAP ,
             'tlp_meta_description' => META_DESCRIPTION_SITEMAP,

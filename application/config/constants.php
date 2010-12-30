@@ -51,6 +51,7 @@ define('TBL_GALLERY_CONTENTS2',           'gallery_contents2');
 define('TBL_GALLERY_PRODUCTS',            'gallery_products');
 define('TBL_CATEGORIES',                  'categories');
 define('TBL_PRODUCTS',                    'products');
+define('TBL_TESTIMONIAL',                 'testimoniales');
 
 /*
 |--------------------------------------------------------------------------
@@ -158,7 +159,7 @@ define('TITLE_TESTIMONIALES', 'Electromecánica Bottino - Testimoniales');
 define('TITLE_SITEMAP', 'Electromecánica Bottino - Mapa del sitio');
 define('TITLE_CONTACTO', 'Electromecánica Bottino - Contacto');
 define('TITLE_CONSULTS', 'Electromecánica Bottino - Consulta');
-define('TITLE_TRABAJECONOSOTROS', 'Electromecánica Bottino - Trabaje con nosotors');
+define('TITLE_TRABAJECONOSOTROS', 'Electromecánica Bottino - Trabaje con nosotros');
 
 
 

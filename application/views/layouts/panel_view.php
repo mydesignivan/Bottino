@@ -8,8 +8,9 @@
     <link href="public/images/favicon.ico" rel="stylesheet icon" type="image/ico" />
     <?php echo $this->assets->css(); ?>
     <!--[if lt IE 8]><link rel="stylesheet" href="public/css/blueprint/ie.css" type="text/css" media="screen, projection"/><![endif]-->
+    <!--[if IE 6]><link rel="stylesheet" href="public/css/styleIE6.css" type="text/css" media="screen, projection"/><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="public/css/styleIE7.css" type="text/css" media="screen, projection"/><![endif]-->
     <?php echo $this->assets->js(); ?>
-    <!--[if IE 6]><script type="text/javascript" src="public/js/helpers/DD_belatedPNG.js"></script><![endif]-->
 </head>
 <body>
     <div class="container">

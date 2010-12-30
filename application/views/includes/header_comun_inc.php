@@ -1,5 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');?>
 <div class="header-top<?php if($ER) echo ' header-top-er'?>">
+    <a href="http://www.bottinosa.com" class="link-1" target="_blank" title="Bottino Hnos. Subfactory GRUNDFOS"><img src="public/images/subfactory-grundfos-iso-24.png" alt="" width="24" height="24" /><span>&nbsp;Subfactory</span></a>
     <form id="form-search" class="fsearch" action="<?=site_url('/productos/search');?>" method="post" enctype="application/x-www-form-urlencoded">
         <input type="text" name="txtSearch" value="<?=$this->input->post('txtSearch')!='' ? $this->input->post('txtSearch') : 'BUSCAR'?>" onblur="set_input(event, 'BUSCAR')" onfocus="clear_input(event)" />
         <a href="javascript:void($('form-search').submit())"><img src="public/images/icon-lupa.png" alt="Buscar" width="18" height="18" /></a>

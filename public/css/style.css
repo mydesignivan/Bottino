@@ -117,31 +117,6 @@ a.link-bottsubf{
 }
 
 /*------------------------------------------------------------------------------
- - ESTILOS PARA LISTADOS
- -----------------------------------------------------------------------------*/
-.list-sitemap a{
-    font-size: 100%;
-}
-.list-sitemap ul{
-    display: block !important;
-}
-.list-sitemap ul li{
-    list-style-type: circle !important;
-}
-.list-sitemap ul li li{
-    list-style-type: square !important;
-}
-
-/*------------------------------------------------------------------------------
- - ESTILOS PARA TEXTAREA
- -----------------------------------------------------------------------------*/
-
-/*------------------------------------------------------------------------------
- - ESTILOS PARA SELECT
- -----------------------------------------------------------------------------*/
-
-
-/*------------------------------------------------------------------------------
  - ESTILOS PARA BUTTON
  -----------------------------------------------------------------------------*/
 button{
@@ -157,6 +132,10 @@ button{
 /*------------------------------------------------------------------------------
  - ESTILO QUE ESTAN EN EL "HEADER"
  -----------------------------------------------------------------------------*/
+.header{
+    position: relative;
+    z-index: 2000;
+}
 .header .header-top{
     background-color: #062945;
     text-align: right;
@@ -169,7 +148,7 @@ button{
     background-color: #4082BE;
 }
     .header .header-top a{
-        color:#567995;
+        color:#8EBFE6;
         font-size: 70%;
     }
         .header .header-top-er a{
@@ -181,12 +160,23 @@ button{
     .header .header-top-er a:hover{
         color:#93BD2B;
     }
+    .header .header-top .link-1, .header .header-top-er .link-1{
+        float: left;
+        display: block;
+        font-size: 90%;
+        margin: 2px 0 0 10px;
+    }
+    .header .header-top .link-1 span, .header .header-top-er .link-1 span{
+        position: relative;
+        top: -5px;
+    }
 .header .banner{
     position: relative;
     clear: both;
     width: 950px;
     height: 165px;
     z-index: 100;
+    top:-3px;
 }
     .header #banner{
         position: absolute;
@@ -229,6 +219,7 @@ button{
     height: 40px;
     background: url(public/images/bg-menu.jpg) no-repeat left top;
     margin-left: -7px;
+    top: -4px;
 }
 .header .menu-er{
     background: url(public/images/er/bg-menu.jpg) no-repeat left top;
@@ -343,7 +334,8 @@ button{
  - ESTILO QUE ESTAN EN EL "MAIN CONTAINER"
  -----------------------------------------------------------------------------*/
 .main-container{
-    margin-top: 10px;
+    margin-top: 3px;
+    z-index: 10;
 }
     .main-container .contents{
         font-size: 75% !important;
@@ -397,7 +389,10 @@ button{
                 color: #679B49;
             }
             .main-container .sidebar ul.menu-sidebar li span{
-                margin-left: -12px;
+                /*margin-left: -12px;*/
+                position: absolute;
+                left:-12px;
+                top:2px;
             }
 
         .main-container .sidebar ul.submenu{
@@ -447,10 +442,6 @@ button{
 }
 
 /*------------------------------------------------------------------------------
- - ESTILO PARA SEPARADORES
- -----------------------------------------------------------------h------------*/
-
-/*------------------------------------------------------------------------------
  - ESTILO PARA TABLAS
  -----------------------------------------------------------------------------*/
 table{
@@ -474,9 +465,8 @@ table tbody tr.row-even td{
     background-color: #DBEAEE;
 }
 
-
 /*------------------------------------------------------------------------------
- - ESTILO PARA TABLA "OBRAS"
+ - ESTILO PARA LA TABLA OBRAS
  -----------------------------------------------------------------------------*/
 .table-obras{
     width: 100%;
@@ -502,111 +492,3 @@ table tbody tr.row-even td{
     .table-obras tbody td {
         border: 1px solid #C9D4D8;
     }
-
-
-    
-/*------------------------------------------------------------------------------
- - ESTILO PARA LOGIN
- -----------------------------------------------------------------------------*/
-.contlogin{
-    width: 300px;
-    margin: 0 auto;
-    font-size: 90%;
-}
-    .contlogin fieldset{
-        float: left;
-        width: 300px;
-        height: auto;
-        padding: 5px;
-    }
-        .contlogin fieldset legend{
-            font-size: 100%;
-            margin-left: 10px;
-        }
-    .contlogin input{
-        width: 140px;
-    }
-    .contlogin label{
-        width: 100px;
-    }
-
-/*------------------------------------------------------------------------------
- - ESTILO PARA FORMULARIO "CONTACTO"
- -----------------------------------------------------------------------------*/
-.form-contact {
-    float: left;
-}
-.form-contact *{
-    font-size: 100% !important;
-}
-.form-contact label{
-    width: 140px;
-    font-size: 75%;
-}
-.form-contact input{
-    width: 230px;
-}
-.form-contact select{
-    width: 240px;
-}
-.form-contact textarea{
-    width: 230px;
-    height: 80px;
-    font-size: 120% !important;
-}
-.form-contact .input-code{
-    width: 70px;
-    text-align: center;
-}
-.form-contact .input-num{
-    width: 150px;
-}
-.form-contact button{
-    margin-right: 5px;
-}
-
-/*------------------------------------------------------------------------------
- - ESTILO PARA FORMULARIO "TRABAJE CON NOSOTROS"
- -----------------------------------------------------------------------------*/
-.form-tcn *{
-    font-size: 100% !important;
-}
-.form-tcn label{
-    width: 140px;
-    font-size: 75%;
-}
-.form-tcn input[type=text]{
-    width: 230px;
-}
-.form-tcn textarea{
-    width: 230px;
-    height: 80px;
-    font-size: 120% !important;
-}
-.form-tcn .input-code{
-    width: 50px !important;
-    margin-right: 5px;
-    text-align: center;
-}
-.form-tcn .input-num{
-    width: 168px !important;
-}
-.form-tcn .fnac{
-    width: 90px !important;
-    margin-right: 5px;
-    text-align: center;
-}
-
-/*------------------------------------------------------------------------------
- - ESTILO PARA EL GRAFICO CRONOLOGICO
- -----------------------------------------------------------------------------*/
-.chart{
-    width:948px;
-    height: 327px;
-    margin: 0 auto;
-    background: url(public/images/ajax-loader2.gif) no-repeat center;
-    /*border: 2px solid #666;*/
-}
-.chart img{
-    z-index: 0;
-}

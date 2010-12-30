@@ -1,0 +1,28 @@
+.form-tcn *{
+    font-size: 100% !important;
+}
+.form-tcn label{
+    width: 140px;
+    font-size: 75%;
+}
+.form-tcn input[type=text]{
+    width: 230px;
+}
+.form-tcn textarea{
+    width: 230px;
+    height: 80px;
+    font-size: 120% !important;
+}
+.form-tcn .input-code{
+    width: 50px !important;
+    margin-right: 5px;
+    text-align: center;
+}
+.form-tcn .input-num{
+    width: 168px !important;
+}
+.form-tcn .fnac{
+    width: 90px !important;
+    margin-right: 5px;
+    text-align: center;
+}

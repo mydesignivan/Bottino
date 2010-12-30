@@ -29,6 +29,7 @@ class Index extends MY_Controller {
         if( strpos($content['content'], '{chart}')!==FALSE ) {
             $this->assets->add_js_group('plugins_tooltip');
             $this->assets->add_js('class/chart');
+            $this->assets->add_css('view_chart');
         }
         
         $this->_render('front/contents_view', array(

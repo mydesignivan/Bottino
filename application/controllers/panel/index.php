@@ -17,6 +17,7 @@ class Index extends MY_Controller {
         if( $this->session->userdata('logged_in') ) {
             redirect('/panel/myaccount/');
         }else{
+            $this->assets->add_css('view_login');
             $this->_render('panel/login_view', array(
                 'listMenu'  =>  $this->contents_model->get_menu(),
                 'tlp_title' => TITLE_INDEX

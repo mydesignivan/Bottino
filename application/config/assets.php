@@ -68,7 +68,7 @@ $config['asset_host'] = '';
 $config['servers']= array(
     'dev'	=> 'local.bottino',
     'test'	=> '',
-    'prod'	=> 'www.demo.mydesign.com.ar/bottino'
+    'prod'	=> 'www.ebhsa.com.ar'
 );
 
 /**

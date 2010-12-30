@@ -1,0 +1,22 @@
+.contlogin{
+    width: 300px;
+    margin: 0 auto;
+    font-size: 90%;
+}
+    .contlogin fieldset{
+        float: left;
+        width: 300px;
+        height: auto;
+        padding: 5px;
+    }
+        .contlogin fieldset legend{
+            font-size: 100%;
+            margin-left: 10px;
+        }
+    .contlogin input{
+        width: 140px;
+    }
+    .contlogin label{
+        width: 100px;
+    }
+

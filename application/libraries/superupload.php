@@ -164,7 +164,7 @@ class SuperUpload{
         $ret['status'] = count($this->_error)>0 || count($this->_output)==0 ? "error" : "success";
 
         if( count($this->_output)==0 ){
-            $this->_save_error('El servidor no ha resivido ningun archivo.', 0);
+            $this->_save_error('El servidor no ha resivido ning&uacute;n archivo.', 0);
         }
 
         if( count($this->_error)>0 ) $ret['error'] = $this->_error;

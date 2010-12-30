@@ -66,6 +66,7 @@ var Contents = new (function(){
             $('#linkCatDel').show();
             _show_content();
         }else{
+            $('#linkCatDel').show();
             _clear();
         }
 
@@ -268,7 +269,7 @@ var Contents = new (function(){
     var _clear = function(){
         $('#cont-products').empty();
         $('#fieldset-form legend').html('Contenidos');
-        $('#cont-btn').hide();
+        $('#cont-btn, #linkCatDel, #linkCatEdit').hide();
     };
 
     var _set_order = function(func, arr, initorder, callback){

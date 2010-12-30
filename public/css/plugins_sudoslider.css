@@ -1,0 +1,60 @@
+.container-sudoslider{
+    position: relative;
+    width: 848px;
+    margin: 20px auto 0 auto;
+    border: 2px solid #BDC5CF;
+}
+#sudo-slider{
+    width: 848px;
+}
+#sudo-slider ul.contslider, #sudo-slider ul.contslider li.item, .controls{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+#sudo-slider li.item{
+    width: 848px;
+    overflow:hidden;
+    font-size: 90%;
+}
+    #sudo-slider li.item .cont{
+        margin: 10px;
+    }
+
+a.link-prev, a.link-next{
+    display: block;
+    position: absolute;
+    top:52px;
+}
+a.link-prev{
+    left: -34px;
+}
+a.link-next{
+    left: 850px;
+}
+
+    #controls .controls{
+        position: relative;
+        top:10px;
+        left:20px;
+    }
+    #controls .controls li{
+        float: left;
+        margin-right: 5px;
+    }
+.sudo-slider-page{
+    background: url(public/images/testimoniales-button-paginador.jpg) no-repeat;
+    width: 18px;
+    height: 18px;
+}
+.controls li.current .sudo-slider-page{
+    background: url(public/images/testimoniales-button-paginador-sel.jpg) no-repeat !important;
+}
+
+span.autor,
+span.cargo,
+span.empresa{
+    font-weight: bold;
+    color: #456073;
+    font-size: 90%;
+}

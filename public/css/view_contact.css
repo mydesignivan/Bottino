@@ -1,0 +1,31 @@
+.form-contact {
+    float: left;
+}
+.form-contact *{
+    font-size: 100% !important;
+}
+.form-contact label{
+    width: 140px;
+    font-size: 75%;
+}
+.form-contact input{
+    width: 230px;
+}
+.form-contact select{
+    width: 240px;
+}
+.form-contact textarea{
+    width: 230px;
+    height: 80px;
+    font-size: 120% !important;
+}
+.form-contact .input-code{
+    width: 70px;
+    text-align: center;
+}
+.form-contact .input-num{
+    width: 150px;
+}
+.form-contact button{
+    margin-right: 5px;
+}

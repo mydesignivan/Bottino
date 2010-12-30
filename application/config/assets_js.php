@@ -14,6 +14,7 @@ $config['assets_js_group'] = array(
     'plugins_adgallery' => array('plugins/jquery.ad-gallery.1.2.4/jquery.ad-gallery'),
     'plugins_tooltip' => array('plugins/jquery-tooltip/jquery.tooltip.min'),
     'plugins_datepicker' => array('plugins/jquery-ui.datepicker/ui.datepicker.min'),
+    'plugins_sudoslider' => array('plugins/sudo-slider/jquery.sudoSlider.min', 'plugins/sudo-slider/ready'),
     'helpers_json' => array('helpers/json/JSONError.min', 'helpers/json/JSON.min')
 );
 ?>

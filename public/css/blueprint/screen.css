@@ -484,3 +484,4 @@ form.inline p { margin-bottom:0; }
 .tag-center{margin:0 auto !important; float: none !important;}
 .border{border:1px solid red !important;}
 .outline{border: none !important;}
+ul.resetul,.resetul li{margin: 0; padding: 0; list-style: none;}

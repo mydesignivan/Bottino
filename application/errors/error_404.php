@@ -1,3 +1,4 @@
+<?php header('Location: http://www.ebhsa.com.ar/')?>
 <html>
 <head>
 <title>404 Page Not Found</title>
